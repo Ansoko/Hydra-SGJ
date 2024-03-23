@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Xml.Schema;
 using TMPro;
+using UnityEditor.Compilation;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -139,10 +140,18 @@ public class Inventory : MonoBehaviour
 	{
 		tryRemainingEM--;
 		EMRemainingText.text = tryRemainingEM.ToString() + "/"+nbrTilesEM;
-		PlaceFlag(pos);
 		DatasEnvironement.Instance.RevealConduct(pos);
-		float value = DatasEnvironement.Instance.GetConductValue(pos);
-		AudioManager.instance.PlayRadar(minConduct * value / maxConduct);
+		float value = minConduct * DatasEnvironement.Instance.GetConductValue(pos) / maxConduct;
+		//Debug.Log(value/2);
+		if (value / 2 < 0.5f)
+		{
+			PlaceFlag(pos, Color.Lerp(Color.blue, Color.yellow, value));
+		}
+		else
+		{
+			PlaceFlag(pos, Color.Lerp(Color.yellow, Color.red, ((value/2) - 0.5f)*2));
+		}
+		AudioManager.instance.PlayRadar(value);
 		ShowFlag(pos);
 		return tryRemainingEM;
 	}
@@ -166,7 +175,7 @@ public class Inventory : MonoBehaviour
 				return;
 		}
 
-		PlaceFlag(pos);
+		PlaceFlag(pos, Color.white);
 		DatasEnvironement.Instance.RevealSand(pos);
 		ShowFlag(pos);
 	}
@@ -180,12 +189,13 @@ public class Inventory : MonoBehaviour
 
 	//Flag
 	private HashSet<Vector2> flagsPlaced = new HashSet<Vector2>();
-	public void PlaceFlag(Vector2 pos)
+	public void PlaceFlag(Vector2 pos, Color couleur)
 	{
 		if (!flagsPlaced.Contains(pos)) //place flag
 		{
 			flagsPlaced.Add(pos);
-			Instantiate(flag, PlayerController.instance.targetPosition, Quaternion.identity, DatasEnvironement.Instance.FlagsParent);
+			GameObject flagobj = Instantiate(flag, PlayerController.instance.targetPosition, Quaternion.identity, DatasEnvironement.Instance.FlagsParent);
+			flagobj.GetComponent<SpriteRenderer>().color = couleur;
 		}
 	}
 	public void HideFlag()

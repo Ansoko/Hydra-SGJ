@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 61e23ad974c8e0c4a8cd9cdb2b3334f6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c06e28b6978d91f409ab7721fd5009aa, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -241,7 +241,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 191.15338}
-  m_SizeDelta: {x: 900, y: 0}
+  m_SizeDelta: {x: 900, y: 126.94}
   m_Pivot: {x: 0.5, y: -0.0000000037252903}
 --- !u!114 &296764575
 MonoBehaviour:
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 50c375f1993aaea4582d512c8d0a7763, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e74fb97130ad6f644ac610bd79cc757d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -430,6 +430,81 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 3
   m_ColliderType: 1
+--- !u!1 &813756129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 813756130}
+  - component: {fileID: 813756132}
+  - component: {fileID: 813756131}
+  m_Layer: 5
+  m_Name: background - Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &813756130
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813756129}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1328332705}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &813756131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813756129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &813756132
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813756129}
+  m_CullTransparentMesh: 1
 --- !u!1 &881196192
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,7 +1027,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1328332701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -967,29 +1042,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 1546884353}
   lines:
-  - "Miallo ? Chark\xE9o ? C'est Charchiviste !\\nJ'ai fait une d\xE9couverte qui
-    va t'int\xE9resser, dans un parchemin du Xe s. trouv\xE9 aux archives d'Angers.\\n\xC7a
-    concerne tes recherches sur les Vikings !"
-  - Tu m'intrigues Charchiviste, raconte !
-  - "\xC7a parle des vikings qui ont attaqu\xE9 l'abbaye de Saint-Florent-le-Vieil
-    en 853, dans les Miraculi d'Adrevald.\\n\xC9coute \xE7a : \"Interea stationem
-    navium suarum, ac si asilum... omnium latrunculorum, in insula quadam coenobio
-    Sancti Florentii subposita componentes\""
-  - "Heu.. en fran\xE7ais s'il te pla\xEEt, tu connais mon pi\xE8tre niveau en latin..."
-  - "Ah oui, pardon ! Alors donc apr\xE8s avoir attaqu\xE9 l'abbaye le texte parle
-    de ce que les vikings ont fait :<br>\"Cependant, am\xE9nageant un abri pour leurs
-    navires, un asile pour tous les pirates, dans une \xEEle situ\xE9e au pied du
-    monast\xE8re de Saint-Florent, ils \xE9difi\xE8rent aussi des cabanes formant
-    une sorte de bourg pour y garder en esclavage des troupes de captifs encha\xEEn\xE9s,
-    et, \xE0 l'occasion, y refaire leurs forces et se retrouver pr\xEAts \xE0 repartir
-    derechef en exp\xE9dition.\""
-  - "G\xE9nial ! Je prend mon appareil de mesure \xE9lectromagn\xE9tique et ma tari\xE8re
-    \xE0 mains et je file sur l'\xEEle au pied de l'abbaye pour chercher cet ancien
-    campement.\\nHum...Vu que les chables arrivent en Loire essentiellement \xE0
-    partir du XIIIe s. dans le secteur, il faut d'abord que j'arrive \xE0 localiser
-    une \xEEle faite de limons et d'argiles, noy\xE9s dans ces chables plus r\xE9cents...\\nMiaou
-    ! Je te tiens au courant Charchiviste, et merci du tuyau !"
-  textSpeed: 0.02
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 100
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  textSpeed: 0.01
+  imgBackground: {fileID: 813756131}
+  rightCharacter: {fileID: 701015992}
+  csvFile: dialogues.csv
 --- !u!114 &1328332702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1065,6 +1136,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 813756130}
   - {fileID: 62008653}
   - {fileID: 701015991}
   - {fileID: 296764574}
@@ -1207,10 +1279,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 296764574}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 449.99997, y: 0}
-  m_SizeDelta: {x: 900, y: 0}
+  m_SizeDelta: {x: 900, y: 126.94}
   m_Pivot: {x: 0.49999997, y: 1}
 --- !u!114 &1546884357
 MonoBehaviour:
@@ -1519,6 +1591,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4419721750396961801, guid: 8d035039f359a1b4db4e65c72277d264, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6076537363560484330, guid: 8d035039f359a1b4db4e65c72277d264, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6289403316381963638, guid: 8d035039f359a1b4db4e65c72277d264, type: 3}
