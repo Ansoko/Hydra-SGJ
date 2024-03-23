@@ -1,7 +1,6 @@
-using System;
+
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
+using System.Xml.Schema;
 using TMPro;
 using UnityEngine;
 
@@ -14,6 +13,9 @@ public class Inventory : MonoBehaviour
 	[SerializeField] private TMP_Text conductText;
 	[SerializeField] private GameObject sandWindow;
 	[SerializeField] private TMP_Text sandText;
+	[SerializeField] private RectTransform sandSlider;
+	[SerializeField] private GameObject charbonSable;
+	[SerializeField] private GameObject charbonArgile;
 	[SerializeField] private GameObject flag;
 	[SerializeField] private TMP_Text portefeuilleText;
 	public TMP_Text EMRemainingText;
@@ -32,6 +34,9 @@ public class Inventory : MonoBehaviour
 	}
 	private void Start()
 	{
+		drapeauWindow.SetActive(false);
+		conductWindow.SetActive(false);
+		sandWindow.SetActive(false);
 		SelectTool(currentToolIndex);
 		ChangePortefeuille(0);
 	}
@@ -176,9 +181,34 @@ public class Inventory : MonoBehaviour
 		{
 			drapeauWindow.SetActive(true);
 			conductWindow.SetActive(DatasEnvironement.Instance.tilesDatas[pos].conductRevealed);
-			conductText.text = "<b>Avec l'EM31</b>\r\nConductivité : " + DatasEnvironement.Instance.GetConductValue(pos).ToString() + "mS";
+			conductText.text = "<b>Avec l'EM31</b>\r\nConductivité : " + DatasEnvironement.Instance.GetConductValue(pos).ToString() + "mS";			
 			sandWindow.SetActive(DatasEnvironement.Instance.tilesDatas[pos].sandRevealed);
-			sandText.text = "Sable\r\n" + DatasEnvironement.Instance.GetSandValue(pos).ToString() + "m";
+			if (DatasEnvironement.Instance.tilesDatas[pos].sandRevealed)
+			{
+				sandText.text = "Sable\r\n" + DatasEnvironement.Instance.GetSandValue(pos).ToString() + "m";
+				sandSlider.sizeDelta = new(0, DatasEnvironement.Instance.GetSandValue(pos) * 300 / 4.01f); //4,01m max
+				switch (DatasEnvironement.Instance.GetCharbValue(pos)) {
+					case 0:
+						charbonSable.SetActive(false);
+						charbonArgile.SetActive(false);
+						break;
+					case 1:
+						charbonSable.SetActive(false);
+						charbonArgile.SetActive(true);
+						break;
+					case 100:
+						charbonSable.SetActive(true);
+						charbonArgile.SetActive(false);
+						break;
+					case 101:
+						charbonSable.SetActive(true);
+						charbonArgile.SetActive(true);
+						break;
+
+				}
+				
+			}
+
 		}
 	}
 	public void ChangePortefeuille(int price)

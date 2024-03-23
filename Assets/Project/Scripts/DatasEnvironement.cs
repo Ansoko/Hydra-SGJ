@@ -14,6 +14,7 @@ public class DatasEnvironement : MonoBehaviour
 	public string csvFileConduct;
 	public string csvFileSand;
 	public string csvFileAleas;
+	public string csvFileCharbons;
 
 	public Transform FlagsParent;
 
@@ -25,15 +26,17 @@ public class DatasEnvironement : MonoBehaviour
 		public float conductivite;
 		public float sand;
 		public int alea;
+		public int charbons;
 		public bool conductRevealed;
 		public bool sandRevealed;
 
-		public TileData(int type, float conductivite, float sand, int alea)
+		public TileData(int type, float conductivite, float sand, int alea, int charbons)
 		{
 			this.type = type;
 			this.sand = sand;
 			this.conductivite = conductivite;
 			this.alea = alea;
+			this.charbons = charbons;
 		}
 	}
 	public void RevealConduct(Vector2 pos, bool reveal = true)
@@ -68,6 +71,7 @@ public class DatasEnvironement : MonoBehaviour
 		string filePathConduct = Path.Combine(Application.streamingAssetsPath, csvFileConduct);
 		string filePathSand = Path.Combine(Application.streamingAssetsPath, csvFileSand);
 		string filePathAlea = Path.Combine(Application.streamingAssetsPath, csvFileAleas);
+		string filePathCharb = Path.Combine(Application.streamingAssetsPath, csvFileCharbons);
 
 		if (File.Exists(filePathTile)&& File.Exists(filePathSand) && File.Exists(filePathAlea) && File.Exists(filePathConduct))
 		{
@@ -75,6 +79,7 @@ public class DatasEnvironement : MonoBehaviour
 			string[] linesConduct = File.ReadAllLines(filePathConduct);
 			string[] linesSand = File.ReadAllLines(filePathSand);
 			string[] linesAleas = File.ReadAllLines(filePathAlea);
+			string[] linesCharb = File.ReadAllLines(filePathCharb);
 
 			for (int y = 0; y < linesTile.Length; y++)
 			{
@@ -82,6 +87,7 @@ public class DatasEnvironement : MonoBehaviour
 				string[] valuesConduct = linesConduct[y].Split(',');
 				string[] valuesSand = linesSand[y].Split(';');
 				string[] valuesAleas = linesAleas[y].Split(',');
+				string[] valuesCharb = linesCharb[y].Split(',');
 
 				for (int x = 0; x < valuesTile.Length; x++)
 				{
@@ -89,9 +95,10 @@ public class DatasEnvironement : MonoBehaviour
 					float indexConduct = float.Parse(valuesConduct[x], CultureInfo.InvariantCulture);
 					float tileIndexSand = float.Parse(valuesSand[x], CultureInfo.InvariantCulture);
 					int indexAlea = int.Parse(valuesAleas[x]);
+					int indexCharb = int.Parse(valuesCharb[x]);
 
 					tilemap.SetTile(new Vector3Int(x, -y, 0), TilesTypesDict[tileIndexType]);
-					tilesDatas.Add(new Vector2(x, -y), new(tileIndexType, indexConduct, tileIndexSand, indexAlea));
+					tilesDatas.Add(new Vector2(x, -y), new(tileIndexType, indexConduct, tileIndexSand, indexAlea, indexCharb));
 				}
 			}
 		}
@@ -108,6 +115,10 @@ public class DatasEnvironement : MonoBehaviour
 	public float GetSandValue(Vector2 pos)
 	{
 		return tilesDatas[pos].sand;
+	}
+	public int GetCharbValue(Vector2 pos)
+	{
+		return tilesDatas[pos].charbons;
 	}
 	public float GetAlea(Vector2 pos)
 	{
