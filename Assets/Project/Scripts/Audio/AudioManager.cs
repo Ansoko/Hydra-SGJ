@@ -16,13 +16,15 @@ public class AudioManager : MonoBehaviour
 		if (instance == null)
 		{
 			instance = this;
+		}
+				/*
 			DontDestroyOnLoad(gameObject);
 		}
 		else
 		{
 			Destroy(gameObject);
 			return;
-		}
+		*/
 
 		//audioSource.volume = PlayerPrefs.GetFloat("MusicVolume", .5f);
 		//sfxAudioSource.volume = PlayerPrefs.GetFloat("SFXVolume", .5f);
@@ -80,6 +82,46 @@ public class AudioManager : MonoBehaviour
 	{
 		if (uiBack != null) PlaySFX(uiBack);
 		else Debug.LogWarning("No sound for return button");
+	}
+	#endregion
+
+	#region Joueur
+	[Header("UI buttons sounds")]
+	[SerializeField] private AudioClip chatNo;
+	[SerializeField] private AudioClip chatYes;
+	[SerializeField] private AudioClip bzz;
+	[SerializeField] private AudioClip dirt;
+	[SerializeField] private AudioClip grass;
+	[SerializeField] private AudioClip concrete;
+	public void PlayCatNo()
+	{
+		if (chatNo != null) PlaySFX(chatNo);
+		else Debug.LogWarning("No sound for no cat");
+	}
+	public void PlayCat()
+	{
+		if (chatYes != null) PlaySFX(chatYes);
+		else Debug.LogWarning("No sound for cat");
+	}
+	public void PlayBzz()
+	{
+		if (bzz != null) PlaySFX(bzz);
+		else Debug.LogWarning("No sound for electrocution");
+	}
+	public void PlayDirt()
+	{
+		if (dirt != null) PlaySFX(dirt);
+		else Debug.LogWarning("No sound for dirt");
+	}
+	public void PlayGrass()
+	{
+		if (grass != null) PlaySFX(grass);
+		else Debug.LogWarning("No sound for grass");
+	}
+	public void PlayConcrete()
+	{
+		if (concrete != null) PlaySFX(concrete);
+		else Debug.LogWarning("No sound for concrete");
 	}
 	#endregion
 

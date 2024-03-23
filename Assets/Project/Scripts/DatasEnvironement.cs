@@ -22,10 +22,10 @@ public class DatasEnvironement : MonoBehaviour
 
 	public class TileData
 	{
-		public int type;
+		public int type; // 255 eau, 1 bois, 2 marais, 3 ferme, 4 route, 10 prairie, 30 pont
 		public float conductivite;
 		public float sand;
-		public int alea;
+		public int alea; //
 		public int charbons;
 		public bool conductRevealed;
 		public bool sandRevealed;
@@ -35,8 +35,8 @@ public class DatasEnvironement : MonoBehaviour
 			this.type = type;
 			this.sand = sand;
 			this.conductivite = conductivite;
-			this.alea = alea;
-			this.charbons = charbons;
+			this.alea = alea; //10 route actuelles, 20 cables enterré, 30 ancienne route 
+			this.charbons = charbons; // 0 rien, 100 sable, 1 limon, 101 sable + limon
 		}
 	}
 	public void RevealConduct(Vector2 pos, bool reveal = true)
@@ -123,6 +123,10 @@ public class DatasEnvironement : MonoBehaviour
 	public float GetAlea(Vector2 pos)
 	{
 		return tilesDatas[pos].alea;
+	}
+	public bool IsWater(Vector2 pos)
+	{
+		return tilesDatas[pos].type.Equals(255);
 	}
 }
 

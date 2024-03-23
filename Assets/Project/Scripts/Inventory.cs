@@ -148,9 +148,26 @@ public class Inventory : MonoBehaviour
 	}
 	private void Tariere(Vector2 pos)
 	{
+		ChangePortefeuille(-priceTariere);
+
+		switch(DatasEnvironement.Instance.GetAlea(pos)) { //aléa !!
+			case 10:
+				PlayerController.instance.Thinking("Je ne peux pas creuser dans la route.");
+				AudioManager.instance.PlayCatNo();
+				return;
+			case 20:
+				PlayerController.instance.Thinking("Gzzzt MIAOU ça, c'était un cable éléctrique souterrain !");
+				StartCoroutine(PlayerController.instance.Elect());
+				AudioManager.instance.PlayCatNo();
+				return;
+			case 30:
+				PlayerController.instance.Thinking("Impossible de creuser ici, on dirait qu'il y a des graviers compacté là dessous !");
+				AudioManager.instance.PlayCatNo();
+				return;
+		}
+
 		PlaceFlag(pos);
 		DatasEnvironement.Instance.RevealSand(pos);
-		ChangePortefeuille(-priceTariere);
 		ShowFlag(pos);
 	}
 

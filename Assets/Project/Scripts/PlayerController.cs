@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
+using UnityEditor.VersionControl;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +9,7 @@ public class PlayerController : MonoBehaviour
 	public float gridSize = 1f; // Taille de chaque case de la grille
 	[HideInInspector] public Vector3 targetPosition; // Position cible pour le mouvement
 	private bool isMoving = false; // Indicateur si le personnage est en mouvement
+	private int electrocution = 1;
 
 	public static PlayerController instance;
 	private void Awake()
@@ -24,12 +24,27 @@ public class PlayerController : MonoBehaviour
 	{
 		if (!isMoving)
 		{
-			float moveHorizontal = Input.GetAxis("Horizontal");
-			float moveVertical = Input.GetAxis("Vertical");
+			float moveHorizontal = Input.GetAxis("Horizontal") * electrocution;
+			float moveVertical = Input.GetAxis("Vertical") * electrocution;
 			Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0f);
 			if (movement != Vector3.zero)
 			{
-				targetPosition = transform.position + RoundVector(movement.normalized*gridSize);
+				targetPosition = transform.position + RoundVector(movement.normalized * gridSize);
+				switch (DatasEnvironement.Instance.tilesDatas[GetPosOnMap()].type)
+				{
+					case 4:
+					case 30:
+						AudioManager.instance.PlayConcrete();
+						break;
+					case 1:
+					case 2:
+						AudioManager.instance.PlayDirt();
+						break;
+					case 3:
+					case 10:
+						AudioManager.instance.PlayGrass();
+						break;
+				}
 				StartCoroutine(MoveToTarget());
 			}
 
@@ -50,12 +65,26 @@ public class PlayerController : MonoBehaviour
 	{
 		isMoving = true;
 		Inventory.Instance.HideFlag();
+		Vector3 oldPos = transform.position;
 
 		while (transform.position != targetPosition)
 		{
 			Vector3 newPosition = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
 			transform.position = newPosition;
 			yield return null;
+		}
+
+		if (DatasEnvironement.Instance.IsWater(GetPosOnMap()))
+		{
+			Thinking(noWater);
+			AudioManager.instance.PlayCatNo();
+			targetPosition = oldPos;
+			while (transform.position != targetPosition)
+			{
+				Vector3 newPosition = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+				transform.position = newPosition;
+				yield return null;
+			}
 		}
 		isMoving = false;
 
@@ -88,4 +117,34 @@ public class PlayerController : MonoBehaviour
 		nbrTileEMRemaining = Inventory.Instance.EM31(GetPosOnMap());
 	}
 
+	[SerializeField] private TMP_Text thinkingText;
+	[SerializeField] private string noWater;
+	private Coroutine displayCoroutine;
+	public void Thinking(string txt, float duration = 5)
+	{
+		if (displayCoroutine != null)
+		{
+			StopCoroutine(displayCoroutine);
+		}
+
+		thinkingText.text = txt;
+
+		displayCoroutine = StartCoroutine(ClearTextAfterSeconds(duration));
+	}
+
+	private IEnumerator ClearTextAfterSeconds(float duration)
+	{
+		yield return new WaitForSeconds(duration);
+		thinkingText.text = "";
+		displayCoroutine = null;
+	}
+
+	public IEnumerator Elect(float duration = 5)
+	{
+		if (electrocution == -1) yield break;
+
+		electrocution = -1;
+		yield return new WaitForSeconds(duration);
+		electrocution = 1;
+	}
 }
