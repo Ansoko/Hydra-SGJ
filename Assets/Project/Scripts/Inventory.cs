@@ -115,6 +115,7 @@ public class Inventory : MonoBehaviour
 				//else
 				EMRemainingText.gameObject.SetActive(true);
 				tryRemainingEM = nbrTilesEM;
+				ChangePortefeuille(-priceEM);
 				PlayerController.instance.EMWay();
 				//EM31(pos);
 				break;
@@ -131,7 +132,7 @@ public class Inventory : MonoBehaviour
 		}
 	}
 	private float minConduct = 4;
-	private float maxConduct = 48;
+	private float maxConduct = 48*2;
 	//pitch entre 0 et 2
 	private int tryRemainingEM = 0;
 	public int EM31(Vector2 pos)
@@ -142,7 +143,6 @@ public class Inventory : MonoBehaviour
 		DatasEnvironement.Instance.RevealConduct(pos);
 		float value = DatasEnvironement.Instance.GetConductValue(pos);
 		AudioManager.instance.PlayRadar(minConduct * value / maxConduct);
-		ChangePortefeuille(-priceEM);
 		ShowFlag(pos);
 		return tryRemainingEM;
 	}

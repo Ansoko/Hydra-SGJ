@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEditor.UI;
+using UnityEngine.UI;
 
 public class Dialogue : MonoBehaviour
 {
-
     public TextMeshProUGUI textComponent;
     public string[] lines;
     public float textSpeed;
@@ -31,12 +32,16 @@ public class Dialogue : MonoBehaviour
             else
             {
                 StopAllCoroutines();
-                textComponent.text = lines[index];
-            }
+                textComponent.SetText(lines[index]);
+                RectTransform obj = GetComponentInChildren<LayoutGroup>().gameObject.transform as RectTransform;
+				GetComponentInChildren<LayoutGroup>().SetLayoutHorizontal();
+				GetComponentInChildren<LayoutGroup>().SetLayoutVertical();
+				LayoutRebuilder.ForceRebuildLayoutImmediate(obj);
+			}
         }
     }
 
-    void StartDialogue(){
+	void StartDialogue(){
         index=0;
         StartCoroutine(TypeLine());
     }
@@ -46,9 +51,8 @@ public class Dialogue : MonoBehaviour
         // Type each character 1 by 1 
         foreach (char c in lines[index].ToCharArray())
         {
-            textComponent.text +=c;
+            textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
-
         }
     }
 

@@ -24,8 +24,8 @@ public class AudioManager : MonoBehaviour
 			return;
 		}
 
-		audioSource.volume = PlayerPrefs.GetFloat("MusicVolume", .5f);
-		sfxAudioSource.volume = PlayerPrefs.GetFloat("SFXVolume", .5f);
+		//audioSource.volume = PlayerPrefs.GetFloat("MusicVolume", .5f);
+		//sfxAudioSource.volume = PlayerPrefs.GetFloat("SFXVolume", .5f);
 	}
 
 	public void PlayMusic(AudioClip audioClip)
