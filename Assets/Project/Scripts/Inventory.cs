@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 
@@ -12,6 +15,13 @@ public class Inventory : MonoBehaviour
 	[SerializeField] private GameObject sandWindow;
 	[SerializeField] private TMP_Text sandText;
 	[SerializeField] private GameObject flag;
+	[SerializeField] private TMP_Text portefeuilleText;
+	public TMP_Text EMRemainingText;
+	[SerializeField] private int portefeuilleCroquette = 2000;
+	[SerializeField] private int priceEM;
+	[SerializeField] private int priceTariere;
+	[SerializeField] private int priceDatation;
+	[SerializeField] private int nbrTilesEM;
 
 	private int currentToolIndex = 0;
 
@@ -23,6 +33,7 @@ public class Inventory : MonoBehaviour
 	private void Start()
 	{
 		SelectTool(currentToolIndex);
+		ChangePortefeuille(0);
 	}
 
 	void Update()
@@ -47,12 +58,13 @@ public class Inventory : MonoBehaviour
 			{
 				SelectTool(1);
 			}
-			/*else if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+			else if (Input.GetKeyDown(KeyCode.Alpha3))
 			{
-				SelectTool(i);
-			}else if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+				SelectTool(2);
+			}
+			/*else if (Input.GetKeyDown(KeyCode.Alpha4))
 			{
-				SelectTool(i);
+				SelectTool(3);
 			}
 			*/
 		}
@@ -94,39 +106,66 @@ public class Inventory : MonoBehaviour
 		switch (currentToolIndex)
 		{
 			case 0: //conductivity
-				if (!DatasEnvironement.Instance.tilesDatas[pos].conductRevealed && !DatasEnvironement.Instance.tilesDatas[pos].sandRevealed) //place flag
-				{
-					Instantiate(flag, PlayerController.instance.targetPosition, Quaternion.identity, DatasEnvironement.Instance.FlagsParent);
-				}
-				EM31(pos);
+				if (tryRemainingEM != 0) break; //encore en cours
+				//else
+				EMRemainingText.gameObject.SetActive(true);
+				tryRemainingEM = nbrTilesEM;
+				PlayerController.instance.EMWay();
+				//EM31(pos);
 				break;
 			
 			case 1: //tariere
-				if (!DatasEnvironement.Instance.tilesDatas[pos].conductRevealed && !DatasEnvironement.Instance.tilesDatas[pos].sandRevealed) //place flag
-				{
-					Instantiate(flag, PlayerController.instance.targetPosition, Quaternion.identity, DatasEnvironement.Instance.FlagsParent);
-				}
 				Tariere(pos);
+				break;
+
+
+			case 2: //datation
+				//add flag ? : PlaceFlag(pos);
+				Datation(pos);
 				break;
 		}
 	}
 	private float minConduct = 4;
 	private float maxConduct = 48;
 	//pitch entre 0 et 2
-	private void EM31(Vector2 pos)
+	private int tryRemainingEM = 0;
+	public int EM31(Vector2 pos)
 	{
+		tryRemainingEM--;
+		EMRemainingText.text = tryRemainingEM.ToString() + "/"+nbrTilesEM;
+		PlaceFlag(pos);
 		DatasEnvironement.Instance.RevealConduct(pos);
 		float value = DatasEnvironement.Instance.GetConductValue(pos);
 		AudioManager.instance.PlayRadar(minConduct * value / maxConduct);
+		ChangePortefeuille(-priceEM);
 		ShowFlag(pos);
+		return tryRemainingEM;
 	}
 	private void Tariere(Vector2 pos)
 	{
+		PlaceFlag(pos);
 		DatasEnvironement.Instance.RevealSand(pos);
+		ChangePortefeuille(-priceTariere);
 		ShowFlag(pos);
 	}
 
+	private void Datation(Vector2 pos)
+	{
+		ChangePortefeuille(-priceDatation);
+		ShowFlag(pos);
+	}
+
+
 	//Flag
+	private HashSet<Vector2> flagsPlaced = new HashSet<Vector2>();
+	public void PlaceFlag(Vector2 pos)
+	{
+		if (!flagsPlaced.Contains(pos)) //place flag
+		{
+			flagsPlaced.Add(pos);
+			Instantiate(flag, PlayerController.instance.targetPosition, Quaternion.identity, DatasEnvironement.Instance.FlagsParent);
+		}
+	}
 	public void HideFlag()
 	{
 		drapeauWindow.SetActive(false);
@@ -141,5 +180,10 @@ public class Inventory : MonoBehaviour
 			sandWindow.SetActive(DatasEnvironement.Instance.tilesDatas[pos].sandRevealed);
 			sandText.text = "Sable\r\n" + DatasEnvironement.Instance.GetSandValue(pos).ToString() + "m";
 		}
+	}
+	public void ChangePortefeuille(int price)
+	{
+		portefeuilleCroquette += price;
+		portefeuilleText.text = "Portefeuille : \r\n<b>" +portefeuilleCroquette+"</b> croquettes";
 	}
 }

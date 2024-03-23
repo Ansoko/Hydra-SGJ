@@ -16,6 +16,10 @@ public class PlayerController : MonoBehaviour
 	{
 		instance = this;
 	}
+	private void Start()
+	{
+		targetPosition = transform.position;
+	}
 	private void Update()
 	{
 		if (!isMoving)
@@ -33,10 +37,12 @@ public class PlayerController : MonoBehaviour
 			{
 				Inventory.Instance.DoAction(GetPosOnMap());
 			}
+			/*
 			else if (Input.GetKeyUp(KeyCode.E))
 			{
 				AudioManager.instance.StopRadar();
 			}
+			*/
 		}
 	}
 
@@ -44,6 +50,7 @@ public class PlayerController : MonoBehaviour
 	{
 		isMoving = true;
 		Inventory.Instance.HideFlag();
+
 		while (transform.position != targetPosition)
 		{
 			Vector3 newPosition = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
@@ -52,6 +59,12 @@ public class PlayerController : MonoBehaviour
 		}
 		isMoving = false;
 
+		if (nbrTileEMRemaining > 0) EMWay();
+		else
+		{
+			AudioManager.instance.StopRadar();
+			Inventory.Instance.EMRemainingText.gameObject.SetActive(false);
+		}
 		Inventory.Instance.ShowFlag(GetPosOnMap()); 
 	}
 
@@ -67,6 +80,12 @@ public class PlayerController : MonoBehaviour
 	private Vector2 GetPosOnMap()
 	{
 		return (transform.position - new Vector3(gridSize/2, gridSize/2, 0))/gridSize;
+	}
+
+	private int nbrTileEMRemaining = 0;
+	public void EMWay()
+	{
+		nbrTileEMRemaining = Inventory.Instance.EM31(GetPosOnMap());
 	}
 
 }
