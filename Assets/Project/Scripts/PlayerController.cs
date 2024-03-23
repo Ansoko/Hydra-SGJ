@@ -6,7 +6,7 @@ using static UnityEditor.PlayerSettings;
 
 public class PlayerController : MonoBehaviour
 {
-	public float moveSpeed = 1f; // Vitesse de déplacement du personnage
+	public float moveSpeed = 1f; // Vitesse de dï¿½placement du personnage
 	public float gridSize = 1f; // Taille de chaque case de la grille
 	[HideInInspector] public Vector3 targetPosition; // Position cible pour le mouvement
 	private bool isMoving = false; // Indicateur si le personnage est en mouvement
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
 
 	private Vector3 RoundVector(Vector3 vector)
 	{
-		// Arrondir chaque composante du vecteur à la grille
+		// Arrondir chaque composante du vecteur ï¿½ la grille
 		float newX = Mathf.Round(vector.x / gridSize) * gridSize;
 		float newY = Mathf.Round(vector.y / gridSize) * gridSize;
 		float newZ = Mathf.Round(vector.z / gridSize) * gridSize;
