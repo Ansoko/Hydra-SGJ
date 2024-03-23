@@ -2,14 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class PlayerController : MonoBehaviour
 {
 	public float moveSpeed = 1f; // Vitesse de déplacement du personnage
 	public float gridSize = 1f; // Taille de chaque case de la grille
-	private Vector3 targetPosition; // Position cible pour le mouvement
+	[HideInInspector] public Vector3 targetPosition; // Position cible pour le mouvement
 	private bool isMoving = false; // Indicateur si le personnage est en mouvement
 
+	public static PlayerController instance;
+	private void Awake()
+	{
+		instance = this;
+	}
 	private void Update()
 	{
 		if (!isMoving)
@@ -25,8 +31,7 @@ public class PlayerController : MonoBehaviour
 
 			if (Input.GetKeyDown(KeyCode.E))
 			{
-				Debug.Log(DatasEnvironement.Instance.GetSandValue(GetPosOnMap()));
-				AudioManager.instance.PlayRadar(DatasEnvironement.Instance.GetSandValue(GetPosOnMap()) - 1);
+				Inventory.Instance.DoAction(GetPosOnMap());
 			}
 			else if (Input.GetKeyUp(KeyCode.E))
 			{
@@ -38,6 +43,7 @@ public class PlayerController : MonoBehaviour
 	private IEnumerator MoveToTarget()
 	{
 		isMoving = true;
+		Inventory.Instance.HideFlag();
 		while (transform.position != targetPosition)
 		{
 			Vector3 newPosition = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
@@ -45,6 +51,8 @@ public class PlayerController : MonoBehaviour
 			yield return null;
 		}
 		isMoving = false;
+
+		Inventory.Instance.ShowFlag(GetPosOnMap()); 
 	}
 
 	private Vector3 RoundVector(Vector3 vector)
