@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -7,7 +8,9 @@ public class Inventory : MonoBehaviour
 
 	[SerializeField] private GameObject drapeauWindow;
 	[SerializeField] private GameObject conductWindow;
+	[SerializeField] private TMP_Text conductText;
 	[SerializeField] private GameObject sandWindow;
+	[SerializeField] private TMP_Text sandText;
 	[SerializeField] private GameObject flag;
 
 	private int currentToolIndex = 0;
@@ -107,10 +110,14 @@ public class Inventory : MonoBehaviour
 				break;
 		}
 	}
+	private float minConduct = 4;
+	private float maxConduct = 48;
+	//pitch entre 0 et 2
 	private void EM31(Vector2 pos)
 	{
 		DatasEnvironement.Instance.RevealConduct(pos);
-		AudioManager.instance.PlayRadar(DatasEnvironement.Instance.GetSandValue(pos) - 1);
+		float value = DatasEnvironement.Instance.GetConductValue(pos);
+		AudioManager.instance.PlayRadar(minConduct * value / maxConduct);
 		ShowFlag(pos);
 	}
 	private void Tariere(Vector2 pos)
@@ -130,7 +137,9 @@ public class Inventory : MonoBehaviour
 		{
 			drapeauWindow.SetActive(true);
 			conductWindow.SetActive(DatasEnvironement.Instance.tilesDatas[pos].conductRevealed);
+			conductText.text = "<b>Avec l'EM31</b>\r\nConductivité : " + DatasEnvironement.Instance.GetConductValue(pos).ToString() + "mS";
 			sandWindow.SetActive(DatasEnvironement.Instance.tilesDatas[pos].sandRevealed);
+			sandText.text = "Sable\r\n" + DatasEnvironement.Instance.GetSandValue(pos).ToString() + "m";
 		}
 	}
 }

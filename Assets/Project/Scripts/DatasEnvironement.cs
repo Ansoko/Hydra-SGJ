@@ -22,13 +22,13 @@ public class DatasEnvironement : MonoBehaviour
 	public class TileData
 	{
 		public int type;
-		public int conductivite;
+		public float conductivite;
 		public float sand;
 		public int alea;
 		public bool conductRevealed;
 		public bool sandRevealed;
 
-		public TileData(int type, int conductivite, float sand, int alea)
+		public TileData(int type, float conductivite, float sand, int alea)
 		{
 			this.type = type;
 			this.sand = sand;
@@ -79,16 +79,16 @@ public class DatasEnvironement : MonoBehaviour
 			for (int y = 0; y < linesTile.Length; y++)
 			{
 				string[] valuesTile = linesTile[y].Split(',');
-				string[] valuesConduct = linesTile[y].Split(',');
+				string[] valuesConduct = linesConduct[y].Split(',');
 				string[] valuesSand = linesSand[y].Split(';');
-				string[] valuesAleas = linesTile[y].Split(',');
+				string[] valuesAleas = linesAleas[y].Split(',');
 
 				for (int x = 0; x < valuesTile.Length; x++)
 				{
 					int tileIndexType = int.Parse(valuesTile[x]);
-					int indexConduct = int.Parse(valuesTile[x]);
+					float indexConduct = float.Parse(valuesConduct[x], CultureInfo.InvariantCulture);
 					float tileIndexSand = float.Parse(valuesSand[x], CultureInfo.InvariantCulture);
-					int indexAlea = int.Parse(valuesTile[x]);
+					int indexAlea = int.Parse(valuesAleas[x]);
 
 					tilemap.SetTile(new Vector3Int(x, -y, 0), TilesTypesDict[tileIndexType]);
 					tilesDatas.Add(new Vector2(x, -y), new(tileIndexType, indexConduct, tileIndexSand, indexAlea));
@@ -101,9 +101,17 @@ public class DatasEnvironement : MonoBehaviour
 		}
 	}
 
+	public float GetConductValue(Vector2 pos)
+	{
+		return tilesDatas[pos].conductivite;
+	}
 	public float GetSandValue(Vector2 pos)
 	{
 		return tilesDatas[pos].sand;
+	}
+	public float GetAlea(Vector2 pos)
+	{
+		return tilesDatas[pos].alea;
 	}
 }
 

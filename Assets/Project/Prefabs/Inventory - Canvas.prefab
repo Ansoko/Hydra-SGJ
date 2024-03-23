@@ -537,7 +537,9 @@ MonoBehaviour:
   - {fileID: 1613811561121233582}
   drapeauWindow: {fileID: 3831636711149135670}
   conductWindow: {fileID: 5230494054843013476}
+  conductText: {fileID: 4127525328697795017}
   sandWindow: {fileID: 5633529664082589755}
+  sandText: {fileID: 466720873110756102}
   flag: {fileID: 1853898551918630545, guid: 8fc79736986395e4f92c0fc818ca30dd, type: 3}
 --- !u!1 &2563591604518693785
 GameObject:
@@ -647,9 +649,9 @@ RectTransform:
   - {fileID: 1767430436165808065}
   m_Father: {fileID: 8553199484178477489}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7223066832185792241
@@ -1067,7 +1069,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sable
+  m_text: 'Sable
+
+    2,12m'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1154,7 +1158,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8553199484178477489
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1175,7 +1179,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: -250}
-  m_SizeDelta: {x: 400, y: 100}
+  m_SizeDelta: {x: 400, y: 0}
   m_Pivot: {x: -0.000000045701867, y: 1}
 --- !u!222 &7157711251536366974
 CanvasRenderer:
@@ -1590,11 +1594,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8094791304631479399}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 178.7945, y: 55}
-  m_Pivot: {x: 1, y: -0.00000027567148}
+  m_Pivot: {x: 0, y: 0}
 --- !u!222 &877053746053050925
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1657,7 +1661,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1686,7 +1690,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 20, w: 0}
+  m_margin: {x: 10, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
