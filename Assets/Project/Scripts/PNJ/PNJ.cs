@@ -5,9 +5,7 @@ using UnityEngine;
 public class PNJ : MonoBehaviour
 {
 
-    public Canvas dialogueCanvas;
 
-    void Start(){
-        dialogueCanvas.gameObject.SetActive(false);
-    }
+    public DialogueBubble dialogueBubble;
+
 }
