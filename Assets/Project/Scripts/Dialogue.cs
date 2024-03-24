@@ -20,11 +20,17 @@ public class Dialogue : MonoBehaviour
 	private int index;
     private bool isWaiting = false;
 
-    // Start is called before the first frame update
-    void Start()
+	public static Dialogue instance;
+	private void Awake()
+	{
+		instance = this;
+	}
+
+	// Start is called before the first frame update
+	void Start()
     {
-		LoadCSV();
 		textComponent.text = string.Empty;
+		LoadCSV();
     }
 
     // Update is called once per frame
@@ -100,7 +106,7 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
-            //gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 
@@ -149,4 +155,30 @@ public class Dialogue : MonoBehaviour
 		}
 	}
 
+	public string GetDialogueById(string id)
+	{
+		return dictionnaire[id];
+	}
+
+	public void InitOneDialogue(string txt)
+	{
+		StopAllCoroutines();
+		lines = new string[1];
+		lines[0] = txt;
+		gameObject.SetActive(true);
+		textComponent.text = string.Empty;
+		StartDialogue();
+	}
+	private int newDict = 0;
+	public void InitOneNewDialogue(string txt)
+	{
+		StopAllCoroutines();
+		newDict--;
+		dictionnaire.Add(newDict.ToString(), txt);
+		lines = new string[1];
+		lines[0] = newDict.ToString();
+		gameObject.SetActive(true);
+		textComponent.text = string.Empty;
+		StartDialogue();
+	}
 }

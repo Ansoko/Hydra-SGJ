@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 	public float moveSpeed = 1f; // Vitesse de déplacement du personnage
 	public float gridSize = 1f; // Taille de chaque case de la grille
 	[HideInInspector] public Vector3 targetPosition; // Position cible pour le mouvement
-	private bool isMoving = false; // Indicateur si le personnage est en mouvement
+	[HideInInspector] public bool isMoving = false; // Indicateur si le personnage est en mouvement
 	private int electrocution = 1;
 
 	public static PlayerController instance;

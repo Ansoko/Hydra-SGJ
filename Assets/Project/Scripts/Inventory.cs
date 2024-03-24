@@ -165,7 +165,7 @@ public class Inventory : MonoBehaviour
 				AudioManager.instance.PlayCatNo();
 				return;
 			case 20:
-				PlayerController.instance.Thinking("Gzzzt MIAOU ça, c'était un cable éléctrique souterrain !");
+				PlayerController.instance.Thinking("Gzzzt MIAOU ! Ca, c'était un cable éléctrique souterrain !");
 				StartCoroutine(PlayerController.instance.Elect());
 				AudioManager.instance.PlayCatNo();
 				return;
@@ -182,8 +182,31 @@ public class Inventory : MonoBehaviour
 
 	private void Datation(Vector2 pos)
 	{
-		ChangePortefeuille(-priceDatation);
-		ShowFlag(pos);
+		Debug.Log(DatasEnvironement.Instance.GetCharbValue(pos));
+		if (DatasEnvironement.Instance.tilesDatas[pos].sandRevealed)
+		{
+			switch (DatasEnvironement.Instance.GetCharbValue(pos))
+			{
+				case 0:
+					Dialogue.instance.InitOneNewDialogue("Il n'y a pas de charbon dans le sol à analyser.");
+					break;
+				case 100: //sable 
+					Dialogue.instance.InitOneDialogue("1004");
+					ChangePortefeuille(-priceDatation);
+					break;
+				case 1://argile
+				case 101://sable + argile
+					Dialogue.instance.InitOneDialogue("1005");
+					ChangePortefeuille(-priceDatation);
+					break;
+
+			}
+			ShowFlag(pos);
+		}
+		else
+		{
+			Dialogue.instance.InitOneNewDialogue("J'ai besoin de prélever des charbons du sol avec la tarière avant de les analyser.");
+		}
 	}
 
 
@@ -202,6 +225,9 @@ public class Inventory : MonoBehaviour
 	{
 		drapeauWindow.SetActive(false);
 	}
+
+	private bool hasSeenCharbSand = false;
+	private bool hasSeenCharbArgile = false;
 	public void ShowFlag(Vector2 pos)
 	{
 		if (DatasEnvironement.Instance.HasBeenPlanted(pos))
@@ -222,14 +248,29 @@ public class Inventory : MonoBehaviour
 					case 1:
 						charbonSable.SetActive(false);
 						charbonArgile.SetActive(true);
+						if (!hasSeenCharbArgile)
+						{
+							Dialogue.instance.InitOneDialogue("1003");
+							hasSeenCharbArgile = true;
+						}
 						break;
 					case 100:
 						charbonSable.SetActive(true);
 						charbonArgile.SetActive(false);
+						if (!hasSeenCharbSand)
+						{
+							Dialogue.instance.InitOneDialogue("1002");
+							hasSeenCharbSand = true;
+						}
 						break;
 					case 101:
 						charbonSable.SetActive(true);
 						charbonArgile.SetActive(true);
+						if (!hasSeenCharbArgile)
+						{
+							Dialogue.instance.InitOneDialogue("1003");
+							hasSeenCharbArgile = true;
+						}
 						break;
 
 				}
@@ -242,5 +283,27 @@ public class Inventory : MonoBehaviour
 	{
 		portefeuilleCroquette += price;
 		portefeuilleText.text = "Portefeuille : \r\n<b>" +portefeuilleCroquette+"</b> croquettes";
+
+		if (portefeuilleCroquette < priceDatation * 2)
+		{
+			Dialogue.instance.InitOneDialogue("1000");
+		}
+
+		if (portefeuilleCroquette < priceDatation) EndGame("C’est fini pour aujourd'hui, je n’ai même plus assez de croquettes pour financer une datation… Il faudra mieux gérer nos ressources la prochaine fois. En attendant, il n'y a plus qu'à chercher de nouveaux financements.");
+		if (portefeuilleCroquette < 0) EndGame("Plus de croquette pour continuer les recherches, il faudra mieux gérer nos ressources la prochaine fois... En attendant, il n'y a plus qu'à chercher de nouveaux financements.");
 	}
+
+
+	#region GameOver
+
+	[SerializeField] private GameObject gameOverWindow;
+	private void EndGame(string txt)
+	{
+		AudioManager.instance.StopRadar();
+		PlayerController.instance.isMoving = true;
+		gameOverWindow.SetActive(true);
+		gameOverWindow.GetComponentInChildren<TMP_Text>(true).text = txt;
+	}
+
+	#endregion
 }
