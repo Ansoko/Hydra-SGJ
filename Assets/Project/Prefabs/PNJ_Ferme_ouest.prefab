@@ -94,7 +94,7 @@ MonoBehaviour:
   textSpeed: 0.01
   imgBackground: {fileID: 7659337763733007828}
   rightCharacter: {fileID: 0}
-  csvFile: dialogues.csv
+  csvFile: dialogues
 --- !u!1 &5980803033928467635
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,8 +413,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 610a963fc6afb42ad99fc673adf8af1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueCanvasOuest: {fileID: 0}
-  dialogueCanvasMaisonSud: {fileID: 0}
-  dialogueCanvasCentre: {fileID: 0}
-  dialogueCanvasEst: {fileID: 0}
   dialogueBubble: {fileID: 591243084832409220}

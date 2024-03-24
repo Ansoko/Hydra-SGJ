@@ -29,49 +29,6 @@ public class DialogueBubble : MonoBehaviour
 		gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    // void Update()
-    // {
-    //     if (Input.GetMouseButtonDown(0) && !isWaiting)
-    //     {
-    //         if (textComponent.text == dictionnaire[lines[index]])
-    //         {
-    //             switch (index)
-    //             {
-    //                 case 5:
-	// 					rightCharacter.gameObject.SetActive(false);
-	// 					StartCoroutine(FadeOutCoroutine());
-	// 					NextLine();
-	// 					break;
-
-    //                 case 7: //wait for input "1"
-    //                     StartCoroutine(WaitFor(()=>Input.GetKeyDown(KeyCode.Alpha1)));
-    //                     break;
-
-	// 				case 9: //wait for input "E"
-	// 					StartCoroutine(WaitFor(() => Input.GetKeyDown(KeyCode.E)));
-	// 					break;
-
-	// 				default:
-	// 					NextLine();
-    //                     break;
-	// 			}
-    //             //NextLine();
-    //         }
-    //         else
-    //         {
-    //             StopAllCoroutines();
-    //             if(index>=6) imgBackground.gameObject.SetActive(false);
-	// 			textComponent.SetText(dictionnaire[lines[index]]);
-    //             RectTransform obj = GetComponentInChildren<LayoutGroup>().gameObject.transform as RectTransform;
-	// 			GetComponentInChildren<LayoutGroup>().SetLayoutHorizontal();
-	// 			GetComponentInChildren<LayoutGroup>().SetLayoutVertical();
-	// 			LayoutRebuilder.ForceRebuildLayoutImmediate(obj);
-	// 		}
-    //     }
-    // }
-
-
     private IEnumerator WaitFor(Func<bool> untilThis){
         isWaiting = true;
 		yield return new WaitUntil(untilThis);
@@ -136,25 +93,22 @@ public class DialogueBubble : MonoBehaviour
 	private Dictionary<string, string> dictionnaire = new();
 	public string csvFile;
 
+
 	void LoadCSV()
 	{
-		string filePath = Path.Combine(Application.streamingAssetsPath, csvFile);
+		TextAsset textFile = Resources.Load<TextAsset>(csvFile);
+		using StringReader reader = new StringReader(textFile.text);
 
-		if (File.Exists(filePath))
+		while (true)
 		{
-			string[] linesTile = File.ReadAllLines(filePath);
-
-			for (int y = 0; y < linesTile.Length; y++)
+			string line = reader.ReadLine();
+			if (line == string.Empty || line == null)
 			{
-				string[] valuesTile = linesTile[y].Split(';'); //TODO : take code from Anne-So + change ',' -> ';' 
-				dictionnaire.Add(valuesTile[0], valuesTile[1]);
-				Debug.Log(linesTile[y] + " / " + valuesTile[1] );
+				break;
 			}
+			string[] values = line.Split(';');
+			dictionnaire.Add(values[0], values[1]);
 
-		}
-		else
-		{
-			Debug.LogError("CSV file not found");
 		}
 	}
 
