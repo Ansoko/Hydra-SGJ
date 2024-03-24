@@ -5,9 +5,15 @@ using UnityEngine;
 public class PNJ : MonoBehaviour
 {
 
-    public Canvas dialogueCanvas;
+    public Canvas dialogueCanvasOuest;
+    public Canvas dialogueCanvasMaison;
+    public Canvas dialogueCanvasCentre;
+    public Canvas dialogueCanvasSud;
 
     void Start(){
-        dialogueCanvas.gameObject.SetActive(false);
+        dialogueCanvasOuest.gameObject.SetActive(false);
+        dialogueCanvasMaison.gameObject.SetActive(false);
+        dialogueCanvasCentre.gameObject.SetActive(false);
+        dialogueCanvasSud.gameObject.SetActive(false);
     }
 }
