@@ -1,15 +1,21 @@
 using System.Collections;
 using TMPro;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-	public float moveSpeed = 1f; // Vitesse de d�placement du personnage
-	public float gridSize = 1f; // Taille de chaque case de la grille
-	[HideInInspector] public Vector3 targetPosition; // Position cible pour le mouvement
-	[HideInInspector] public bool isMoving = false; // Indicateur si le personnage est en mouvement
+	public float moveSpeed = 1f;
+	public float gridSize = 1f;
+
+	[SerializeField] private Sprite upSprite;
+	[SerializeField] private Sprite downSprite;
+	[SerializeField] private Sprite leftSprite;
+
+
+	[HideInInspector] public Vector3 targetPosition;
+	[HideInInspector] public bool isMoving = false;
 	private int electrocution = 1;
+	private SpriteRenderer spriteRenderer;
 
 	public static PlayerController instance;
 	private void Awake()
@@ -19,6 +25,7 @@ public class PlayerController : MonoBehaviour
 	private void Start()
 	{
 		targetPosition = transform.position;
+		spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 	private void Update()
 	{
@@ -29,6 +36,27 @@ public class PlayerController : MonoBehaviour
 			Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0f);
 			if (movement != Vector3.zero)
 			{
+				if (movement.x < 0) // Vers la gauche
+				{
+					spriteRenderer.sprite = leftSprite;
+					spriteRenderer.flipX = false;
+				}
+				else if (movement.x > 0) // Vers la droite
+				{
+					spriteRenderer.flipX = true;
+					spriteRenderer.sprite = leftSprite;
+				}
+				else if (movement.y > 0) // Vers le bas
+				{
+					spriteRenderer.flipX = false;
+					spriteRenderer.sprite = downSprite;
+				}
+				else if (movement.y < 0) // Vers le haut
+				{
+					spriteRenderer.flipX = false;
+					spriteRenderer.sprite = upSprite;
+				}
+
 				targetPosition = transform.position + RoundVector(movement.normalized * gridSize);
 				switch (DatasEnvironement.Instance.tilesDatas[GetPosOnMap()].type)
 				{
@@ -74,9 +102,12 @@ public class PlayerController : MonoBehaviour
 			yield return null;
 		}
 
-		if (DatasEnvironement.Instance.IsWater(GetPosOnMap()))
+		if (DatasEnvironement.Instance.IsWater(GetPosOnMap()) || DatasEnvironement.Instance.tilesDatas[GetPosOnMap()].type == 3)
 		{
-			Thinking(noWater);
+			if (DatasEnvironement.Instance.IsWater(GetPosOnMap()))
+				Thinking(noWater);
+			else
+				Thinking("C'est une propriété privée, je ne peux pas passer par ici.");
 			AudioManager.instance.PlayCatNo();
 			targetPosition = oldPos;
 			while (transform.position != targetPosition)
@@ -120,7 +151,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private TMP_Text thinkingText;
 	[SerializeField] private string noWater;
 	private Coroutine displayCoroutine;
-	public void Thinking(string txt, float duration = 5)
+	public void Thinking(string txt, float duration = 3)
 	{
 		if (displayCoroutine != null)
 		{
@@ -139,7 +170,7 @@ public class PlayerController : MonoBehaviour
 		displayCoroutine = null;
 	}
 
-	public IEnumerator Elect(float duration = 5)
+	public IEnumerator Elect(float duration = 3)
 	{
 		if (electrocution == -1) yield break;
 

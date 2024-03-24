@@ -36,7 +36,7 @@ public class Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !isWaiting)
+        if ((Input.GetMouseButtonDown(0)||Input.GetKeyDown(KeyCode.Space)) && !isWaiting)
         {
             if (textComponent.text == dictionnaire[lines[index]])
             {
@@ -52,7 +52,15 @@ public class Dialogue : MonoBehaviour
                         StartCoroutine(WaitFor(()=>Input.GetKeyDown(KeyCode.Alpha1)));
                         break;
 
-					case 9: //wait for input "E"
+					case 8: //wait for input "E"
+						StartCoroutine(WaitFor(() => Input.GetKeyDown(KeyCode.E)));
+						break;
+
+					case 9: //wait for moving
+						StartCoroutine(WaitFor(() => (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)));
+						break;
+
+					case 12: //wait for input "E"
 						StartCoroutine(WaitFor(() => Input.GetKeyDown(KeyCode.E)));
 						break;
 
@@ -106,7 +114,8 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
+			finishTuto = true;
+			gameObject.SetActive(false);
         }
     }
 
@@ -132,6 +141,7 @@ public class Dialogue : MonoBehaviour
 
 	private Dictionary<string, string> dictionnaire = new();
 	public string csvFile;
+	private bool finishTuto = false;
 
 	void LoadCSV()
 	{
@@ -143,9 +153,10 @@ public class Dialogue : MonoBehaviour
 
 			for (int y = 0; y < linesTile.Length; y++)
 			{
-				string[] valuesTile = linesTile[y].Split(',');
+				string[] valuesTile = linesTile[y].Split(';');
 				dictionnaire.Add(valuesTile[0], valuesTile[1]);
 			}
+
 
 			StartDialogue();
 		}
@@ -162,6 +173,7 @@ public class Dialogue : MonoBehaviour
 
 	public void InitOneDialogue(string txt)
 	{
+		if (!finishTuto) return;
 		StopAllCoroutines();
 		lines = new string[1];
 		lines[0] = txt;
@@ -172,6 +184,7 @@ public class Dialogue : MonoBehaviour
 	private int newDict = 0;
 	public void InitOneNewDialogue(string txt)
 	{
+		if (!finishTuto) return;
 		StopAllCoroutines();
 		newDict--;
 		dictionnaire.Add(newDict.ToString(), txt);

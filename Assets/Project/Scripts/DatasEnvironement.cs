@@ -3,6 +3,7 @@ using UnityEngine.Tilemaps;
 using System.IO;
 using System.Globalization;
 using System.Collections.Generic;
+using System.Xml.Linq;
 
 public class DatasEnvironement : MonoBehaviour
 {
@@ -97,7 +98,16 @@ public class DatasEnvironement : MonoBehaviour
 					int indexAlea = int.Parse(valuesAleas[x]);
 					int indexCharb = int.Parse(valuesCharb[x]);
 
-					tilemap.SetTile(new Vector3Int(x, -y, 0), TilesTypesDict[tileIndexType]);
+					switch (tileIndexType)
+					{
+						case 10:
+							tilemap.SetTile(new Vector3Int(x, -y, 0), TilesTypesDict[tileIndexType+ Random.Range(0, 3)]);
+							break;
+
+						default:
+							tilemap.SetTile(new Vector3Int(x, -y, 0), TilesTypesDict[tileIndexType]);
+							break;
+					}
 					tilesDatas.Add(new Vector2(x, -y), new(tileIndexType, indexConduct, tileIndexSand, indexAlea, indexCharb));
 				}
 			}

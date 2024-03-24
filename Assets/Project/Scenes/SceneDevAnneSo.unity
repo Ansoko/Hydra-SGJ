@@ -813,6 +813,7 @@ MonoBehaviour:
   - 106
   - 107
   - 108
+  - 109
   textSpeed: 0.01
   imgBackground: {fileID: 813756131}
   rightCharacter: {fileID: 701015992}
@@ -1183,6 +1184,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5679951653269935387, guid: 7dfc2bc73a104f34cbf432f1698306ce, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2885b45face67c343a28c88ca5612ebe, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1537,6 +1542,14 @@ PrefabInstance:
     - target: {fileID: 8094791304631479399, guid: 8d035039f359a1b4db4e65c72277d264, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8179107319668018949, guid: 8d035039f359a1b4db4e65c72277d264, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000019073486
+      objectReference: {fileID: 0}
+    - target: {fileID: 8179107319668018949, guid: 8d035039f359a1b4db4e65c72277d264, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 29.099998
       objectReference: {fileID: 0}
     - target: {fileID: 8553199484178477489, guid: 8d035039f359a1b4db4e65c72277d264, type: 3}
       propertyPath: m_SizeDelta.y

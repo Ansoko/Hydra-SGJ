@@ -149,8 +149,11 @@ MonoBehaviour:
   uiHover: {fileID: 8300000, guid: d069747e5af924540b393e91a2bb3093, type: 3}
   uiSelect: {fileID: 8300000, guid: 858fec66ecc03f84fa0f80cd785b5bd6, type: 3}
   uiBack: {fileID: 8300000, guid: 273767d1ee6c0c84888327f4d7e03e13, type: 3}
+  EM13: {fileID: 8300000, guid: d069747e5af924540b393e91a2bb3093, type: 3}
+  tariere: {fileID: 8300000, guid: c1f012749be37844bb009ae0027db2fe, type: 3}
+  C14: {fileID: 8300000, guid: d069747e5af924540b393e91a2bb3093, type: 3}
   chatNo: {fileID: 8300000, guid: 6462839b5d768ea4db0924491b58ad76, type: 3}
-  chatYes: {fileID: 0}
+  chatYes: {fileID: 8300000, guid: 41fedb020d668aa46a63089db4582f33, type: 3}
   bzz: {fileID: 8300000, guid: 316f6ec71f69a7d428ff8f72a931aa5d, type: 3}
   dirt: {fileID: 8300000, guid: 66d3f5843d8c7df4e8ab0b8c4bfc8d81, type: 3}
   grass: {fileID: 8300000, guid: 6163545b8d1c87c478099f17a1523504, type: 3}

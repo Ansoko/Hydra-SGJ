@@ -47,7 +47,14 @@ public class MenuController : MonoBehaviour
 
 
     public void Jouer(){
-        SceneManager.LoadScene("Principal_Menu");
+        SceneManager.LoadScene("SceneDevAnneSo");
     }
 
+    private void Update()
+    {
+        if (Input.anyKeyDown)
+        {
+            Jouer();
+        }
+    }
 }

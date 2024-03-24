@@ -202,7 +202,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 40
   gridSize: 10
+  upSprite: {fileID: 21300000, guid: 61e23ad974c8e0c4a8cd9cdb2b3334f6, type: 3}
+  downSprite: {fileID: 21300000, guid: 65415b4f4b1278c43ac1f0a8f0e9818c, type: 3}
+  leftSprite: {fileID: 21300000, guid: 50c375f1993aaea4582d512c8d0a7763, type: 3}
   targetPosition: {x: 0, y: 0, z: 0}
+  isMoving: 0
   thinkingText: {fileID: 1516995531476324938}
   noWater: Brrr chat mouille ! La Loire est rapide, je risquerai de me noyer !
 --- !u!1 &7499191783686217222

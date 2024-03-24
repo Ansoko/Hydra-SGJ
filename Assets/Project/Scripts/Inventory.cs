@@ -1,8 +1,6 @@
 
 using System.Collections.Generic;
-using System.Xml.Schema;
 using TMPro;
-using UnityEditor.Compilation;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -26,7 +24,7 @@ public class Inventory : MonoBehaviour
 	[SerializeField] private int priceDatation;
 	[SerializeField] private int nbrTilesEM;
 
-	private int currentToolIndex = 0;
+	private int currentToolIndex = -1;
 
 	public static Inventory Instance;
 	private void Awake()
@@ -38,7 +36,7 @@ public class Inventory : MonoBehaviour
 		drapeauWindow.SetActive(false);
 		conductWindow.SetActive(false);
 		sandWindow.SetActive(false);
-		SelectTool(currentToolIndex);
+		//SelectTool(currentToolIndex);
 		ChangePortefeuille(0);
 	}
 
@@ -99,6 +97,8 @@ public class Inventory : MonoBehaviour
 
 	void UpdateToolSelection()
 	{
+		AudioManager.instance.PlayUISelectEvent();
+
 		foreach (var tool in tools)
 		{
 			tool.SetActive(false);
@@ -116,7 +116,7 @@ public class Inventory : MonoBehaviour
 				//else
 				EMRemainingText.gameObject.SetActive(true);
 				tryRemainingEM = nbrTilesEM;
-				ChangePortefeuille(-priceEM);
+				if (pos.x > 36) ChangePortefeuille(-priceEM);
 				PlayerController.instance.EMWay();
 				//EM31(pos);
 				break;
@@ -138,6 +138,7 @@ public class Inventory : MonoBehaviour
 	private int tryRemainingEM = 0;
 	public int EM31(Vector2 pos)
 	{
+		AudioManager.instance.PlayEM13();
 		tryRemainingEM--;
 		EMRemainingText.text = tryRemainingEM.ToString() + "/"+nbrTilesEM;
 		DatasEnvironement.Instance.RevealConduct(pos);
@@ -157,7 +158,8 @@ public class Inventory : MonoBehaviour
 	}
 	private void Tariere(Vector2 pos)
 	{
-		ChangePortefeuille(-priceTariere);
+		AudioManager.instance.PlayTariere();
+		if(pos.x>36) ChangePortefeuille(-priceTariere);
 
 		switch(DatasEnvironement.Instance.GetAlea(pos)) { //aléa !!
 			case 10:
@@ -167,7 +169,7 @@ public class Inventory : MonoBehaviour
 			case 20:
 				PlayerController.instance.Thinking("Gzzzt MIAOU ! Ca, c'était un cable éléctrique souterrain !");
 				StartCoroutine(PlayerController.instance.Elect());
-				AudioManager.instance.PlayCatNo();
+				AudioManager.instance.PlayBzz();
 				return;
 			case 30:
 				PlayerController.instance.Thinking("Impossible de creuser ici, on dirait qu'il y a des graviers compacté là dessous !");
@@ -185,6 +187,7 @@ public class Inventory : MonoBehaviour
 		Debug.Log(DatasEnvironement.Instance.GetCharbValue(pos));
 		if (DatasEnvironement.Instance.tilesDatas[pos].sandRevealed)
 		{
+			AudioManager.instance.PlayC14();
 			switch (DatasEnvironement.Instance.GetCharbValue(pos))
 			{
 				case 0:
@@ -192,12 +195,12 @@ public class Inventory : MonoBehaviour
 					break;
 				case 100: //sable 
 					Dialogue.instance.InitOneDialogue("1004");
-					ChangePortefeuille(-priceDatation);
+					if (pos.x > 36) ChangePortefeuille(-priceDatation);
 					break;
 				case 1://argile
 				case 101://sable + argile
 					Dialogue.instance.InitOneDialogue("1005");
-					ChangePortefeuille(-priceDatation);
+					if (pos.x > 36) ChangePortefeuille(-priceDatation);
 					break;
 
 			}
@@ -205,6 +208,7 @@ public class Inventory : MonoBehaviour
 		}
 		else
 		{
+			AudioManager.instance.PlayCat();
 			Dialogue.instance.InitOneNewDialogue("J'ai besoin de prélever des charbons du sol avec la tarière avant de les analyser.");
 		}
 	}

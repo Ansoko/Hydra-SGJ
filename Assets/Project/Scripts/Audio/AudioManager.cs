@@ -68,6 +68,10 @@ public class AudioManager : MonoBehaviour
 	[SerializeField] private AudioClip uiHover;
 	[SerializeField] private AudioClip uiSelect;
 	[SerializeField] private AudioClip uiBack;
+	[SerializeField] private AudioClip EM13;
+	[SerializeField] private AudioClip tariere;
+	[SerializeField] private AudioClip C14
+		;
 	public void PlayUIHoverEvent()
 	{
 		if (uiHover != null) PlaySFX(uiHover);
@@ -83,10 +87,25 @@ public class AudioManager : MonoBehaviour
 		if (uiBack != null) PlaySFX(uiBack);
 		else Debug.LogWarning("No sound for return button");
 	}
+	public void PlayEM13()
+	{
+		if (EM13 != null) PlaySFX(EM13);
+		else Debug.LogWarning("No sound for EM13");
+	}
+	public void PlayTariere()
+	{
+		if (tariere != null) PlaySFX(tariere);
+		else Debug.LogWarning("No sound for tariere");
+	}
+	public void PlayC14()
+	{
+		if (C14 != null) PlaySFX(C14);
+		else Debug.LogWarning("No sound for C14");
+	}
 	#endregion
 
 	#region Joueur
-	[Header("UI buttons sounds")]
+	[Header("Player sounds")]
 	[SerializeField] private AudioClip chatNo;
 	[SerializeField] private AudioClip chatYes;
 	[SerializeField] private AudioClip bzz;
