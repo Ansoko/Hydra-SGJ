@@ -570,9 +570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_text
-      value: "Lors de vos recherches vous allez peut-\xEAtre tomber sur une ancienne
-        route qui date de l'\xE9poque de napol\xE9on. Elle se trouve un peu \xE0
-        l'ouest de ma ferme je crois, mais je ne sais pas o\xF9 !"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_fontAsset
@@ -693,8 +691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_text
-      value: "Faites attention si vous faites des trous \xE0 l'Est de ma ferme. Il
-        y a un gros cable \xE9lectrique enterr\xE9 ! Mais je ne sais pas o\xF9\u2026"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_fontAsset
@@ -1858,7 +1855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_text
-      value: "Il fait beau aujourd'hui non ?  Vous allez \xE0 la p\xEAche ?"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_fontAsset
