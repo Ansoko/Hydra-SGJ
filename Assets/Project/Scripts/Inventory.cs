@@ -199,8 +199,7 @@ public class Inventory : MonoBehaviour
 					break;
 				case 1://argile
 				case 101://sable + argile
-						 //Dialogue.instance.InitOneDialogue("1005");
-
+					//Dialogue.instance.InitOneDialogue("1005");
 					//endGame
 					EndGame(Dialogue.instance.GetDialogueById("1005"));
 

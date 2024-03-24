@@ -70,8 +70,8 @@ public class AudioManager : MonoBehaviour
 	[SerializeField] private AudioClip uiBack;
 	[SerializeField] private AudioClip EM13;
 	[SerializeField] private AudioClip tariere;
-	[SerializeField] private AudioClip C14
-		;
+	[SerializeField] private AudioClip C14;
+	[SerializeField] private AudioClip whoosh;
 	public void PlayUIHoverEvent()
 	{
 		if (uiHover != null) PlaySFX(uiHover);
@@ -101,6 +101,11 @@ public class AudioManager : MonoBehaviour
 	{
 		if (C14 != null) PlaySFX(C14);
 		else Debug.LogWarning("No sound for C14");
+	}
+	public void PlayWhoosh()
+	{
+		if (whoosh != null) PlaySFX(whoosh);
+		else Debug.LogWarning("No sound for whoosh");
 	}
 	#endregion
 

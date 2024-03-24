@@ -95,7 +95,7 @@ public class DatasEnvironement : MonoBehaviour
 			}
 
 			string[] valuesTile = lineTile.Split(',');
-			string[] valuesConduct = lineConduct.Split(';');
+			string[] valuesConduct = lineConduct.Split(',');
 			string[] valuesSand = lineSand.Split(';');
 			string[] valuesAleas = lineAleas.Split(',');
 			string[] valuesCharb = lineCharb.Split(',');
