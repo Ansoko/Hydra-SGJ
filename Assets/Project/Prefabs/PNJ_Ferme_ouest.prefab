@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 5549440291683142362}
   - component: {fileID: 141964263002285373}
   - component: {fileID: 7659337763733007828}
+  - component: {fileID: 591243084832409220}
   m_Layer: 5
-  m_Name: Image
+  m_Name: DialogueBubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,6 +77,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &591243084832409220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675560038655547789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34faa4d3e6bf944aeab60810a58737c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textComponent: {fileID: 8807790973787798034}
+  lines: []
+  textSpeed: 0.01
+  imgBackground: {fileID: 7659337763733007828}
+  rightCharacter: {fileID: 0}
+  csvFile: dialogues.csv
 --- !u!1 &5980803033928467635
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,4 +413,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 610a963fc6afb42ad99fc673adf8af1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueCanvas: {fileID: 4381644859227354420}
+  dialogueCanvasOuest: {fileID: 0}
+  dialogueCanvasMaisonSud: {fileID: 0}
+  dialogueCanvasCentre: {fileID: 0}
+  dialogueCanvasEst: {fileID: 0}
+  dialogueBubble: {fileID: 591243084832409220}

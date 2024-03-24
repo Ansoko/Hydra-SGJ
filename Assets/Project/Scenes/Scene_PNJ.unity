@@ -219,11 +219,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5143105663627844849, guid: f72aa4424df712a4f9632fd5432d1042, type: 3}
   m_PrefabInstance: {fileID: 4806429089745154859}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &165492057 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2908025668428581596, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
-  m_PrefabInstance: {fileID: 7235960561593341497}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &165492058 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4989048848077673527, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
@@ -526,6 +521,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4989048848077673527, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: dialogueCanvasEst
+      value: 
+      objectReference: {fileID: 539216846}
+    - target: {fileID: 4989048848077673527, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: dialogueCanvasSud
       value: 
       objectReference: {fileID: 539216846}
@@ -539,6 +538,10 @@ PrefabInstance:
       objectReference: {fileID: 1244611555}
     - target: {fileID: 4989048848077673527, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: dialogueCanvasMaison
+      value: 
+      objectReference: {fileID: 1447526678}
+    - target: {fileID: 4989048848077673527, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: dialogueCanvasMaisonSud
       value: 
       objectReference: {fileID: 1447526678}
     - target: {fileID: 5549440291683142362, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
@@ -559,11 +562,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8635706892071486946, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_Name
-      value: PNJ_Ferme_sud
+      value: PNJ_Ferme_est
       objectReference: {fileID: 0}
     - target: {fileID: 8635706892071486946, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_text
+      value: "Lors de vos recherches vous allez peut-\xEAtre tomber sur une ancienne
+        route qui date de l'\xE9poque de napol\xE9on. Elle se trouve un peu \xE0
+        l'ouest de ma ferme je crois, mais je ne sais pas o\xF9 !"
       objectReference: {fileID: 0}
     - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_fontAsset
@@ -635,6 +644,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4989048848077673527, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: dialogueCanvasEst
+      value: 
+      objectReference: {fileID: 539216846}
+    - target: {fileID: 4989048848077673527, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: dialogueCanvasSud
       value: 
       objectReference: {fileID: 539216846}
@@ -650,21 +663,25 @@ PrefabInstance:
       propertyPath: dialogueCanvasMaison
       value: 
       objectReference: {fileID: 1447526678}
+    - target: {fileID: 4989048848077673527, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: dialogueCanvasMaisonSud
+      value: 
+      objectReference: {fileID: 1447526678}
     - target: {fileID: 5549440291683142362, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1203.52
+      value: 1131.77
       objectReference: {fileID: 0}
     - target: {fileID: 5549440291683142362, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 486.72
+      value: 408.44
       objectReference: {fileID: 0}
     - target: {fileID: 5549440291683142362, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 201.76
+      value: 165.88
       objectReference: {fileID: 0}
     - target: {fileID: 5549440291683142362, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 110.03
+      value: 70.89
       objectReference: {fileID: 0}
     - target: {fileID: 8635706892071486946, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_Name
@@ -675,6 +692,11 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_text
+      value: "Faites attention si vous faites des trous \xE0 l'Est de ma ferme. Il
+        y a un gros cable \xE9lectrique enterr\xE9 ! Mais je ne sais pas o\xF9\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 53dde2e532f39cf41bdf3d0c251c21a8, type: 2}
@@ -682,6 +704,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: -7636589296193103404, guid: 53dde2e532f39cf41bdf3d0c251c21a8, type: 2}
+    - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -731,12 +757,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1024304900}
-  pNJ_Maison: {fileID: 122555155}
-  pNJ_Ferme_sud: {fileID: 1472350815}
+  pNJ_Maison_sud: {fileID: 122555155}
+  pNJ_Ferme_est: {fileID: 1472350815}
   pNJ_Ferme_ouest: {fileID: 165492058}
   pNJ_Ferme_centre: {fileID: 268073052}
   minDist2PNJ: 20
   minDistDeactivate: 30
+  waitBeforePlayerThink: 2
+  dialoguePnjOuest: 10008
+  dialoguePnjEst1: 10000
+  dialoguePnjEst2: 10002
+  dialoguePnjSud: 10006
+  dialoguePnjCentre: 10004
+  playerThinkWPnjOuest: "Miaou ! Si je veux chercher les traces d'un campement viking
+    il faut que je trouve des vestiges en place, pas des objets balad\xE9s par la
+    Loire ! Si il y a des vestiges ils peuvent \xEAtre profond\xE9ment enfouis et
+    n'\xEAtre pas visibles en surface..."
+  playerThinkWPnjEst1: "OK, bon \xE0 chavoir \xE7a !"
+  playerThinkWPnjEst2: "Mmmh ! S'il y a des vestiges ils peuvent \xEAtre profond\xE9ment
+    enfouis et n'\xEAtre pas visibles en surface..."
+  playerThinkWPnjSud: C'est vrai que j'aimerais bien un bon petit poisson, mais la
+    recherche n'attend pas !
+  playerThinkWPnjCentre: "Miaoui ! Il va falloir faire chattention. En plus \xE7a
+    peut modifier mon signal \xE9lectromagn\xE9tique !"
 --- !u!4 &1090032376
 Transform:
   m_ObjectHideFlags: 0
@@ -750,9 +793,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 165492057}
-  - {fileID: 268073051}
+  - {fileID: 7235960561593341498}
   - {fileID: 1472350814}
+  - {fileID: 268073051}
   - {fileID: 122555154}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1550,6 +1593,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4164949140621282287, guid: 7dfc2bc73a104f34cbf432f1698306ce, type: 3}
+      propertyPath: chatYes
+      value: 
+      objectReference: {fileID: 8300000, guid: 6462839b5d768ea4db0924491b58ad76, type: 3}
     - target: {fileID: 4833263853398429939, guid: 7dfc2bc73a104f34cbf432f1698306ce, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1762,6 +1809,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4989048848077673527, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: dialogueCanvasEst
+      value: 
+      objectReference: {fileID: 539216846}
+    - target: {fileID: 4989048848077673527, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: dialogueCanvasSud
       value: 
       objectReference: {fileID: 539216846}
@@ -1777,29 +1828,37 @@ PrefabInstance:
       propertyPath: dialogueCanvasMaison
       value: 
       objectReference: {fileID: 1447526678}
+    - target: {fileID: 4989048848077673527, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: dialogueCanvasMaisonSud
+      value: 
+      objectReference: {fileID: 1447526678}
     - target: {fileID: 5549440291683142362, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1379.51
+      value: 1033.79
       objectReference: {fileID: 0}
     - target: {fileID: 5549440291683142362, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 451.84
+      value: 253.98
       objectReference: {fileID: 0}
     - target: {fileID: 5549440291683142362, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 16.63
+      value: -7.8
       objectReference: {fileID: 0}
     - target: {fileID: 5549440291683142362, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 92.58
+      value: -6.35
       objectReference: {fileID: 0}
     - target: {fileID: 8635706892071486946, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_Name
-      value: PNJ_Maison
+      value: PNJ_Maison_sud
       objectReference: {fileID: 0}
     - target: {fileID: 8635706892071486946, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_text
+      value: "Il fait beau aujourd'hui non ?  Vous allez \xE0 la p\xEAche ?"
       objectReference: {fileID: 0}
     - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_fontAsset
@@ -1809,6 +1868,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: -7636589296193103404, guid: 53dde2e532f39cf41bdf3d0c251c21a8, type: 2}
+    - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -2160,6 +2223,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4404438765244269079, guid: f72aa4424df712a4f9632fd5432d1042, type: 3}
+      propertyPath: dialogueWPnjSud
+      value: C'est vrai que j'aimerais bien un bon petit poisson, mais la recherche
+        n'attend pas !
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404438765244269079, guid: f72aa4424df712a4f9632fd5432d1042, type: 3}
+      propertyPath: dialogueWPnjEst1
+      value: "OK, bon \xE0 chavoir \xE7a !"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404438765244269079, guid: f72aa4424df712a4f9632fd5432d1042, type: 3}
+      propertyPath: dialogueWPnjOuest
+      value: "Miaou ! Si je veux chercher les traces d'un campement viking il faut
+        que je trouve des vestiges en place, pas des objets balad\xE9s par la Loire
+        ! Si il y a des vestiges ils peuvent \xEAtre profond\xE9ment enfouis et n'\xEAtre
+        pas visibles en surface.."
+      objectReference: {fileID: 0}
     - target: {fileID: 5143105663627844849, guid: f72aa4424df712a4f9632fd5432d1042, type: 3}
       propertyPath: m_LocalPosition.x
       value: 185
@@ -2213,6 +2292,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1090032376}
     m_Modifications:
+    - target: {fileID: 675560038655547789, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2281735289134956748, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0.0000038146973
@@ -2278,6 +2361,10 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4989048848077673527, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: dialogueCanvasEst
+      value: 
+      objectReference: {fileID: 539216846}
+    - target: {fileID: 4989048848077673527, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: dialogueCanvasSud
       value: 
       objectReference: {fileID: 539216846}
@@ -2291,6 +2378,10 @@ PrefabInstance:
       objectReference: {fileID: 1244611555}
     - target: {fileID: 4989048848077673527, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: dialogueCanvasMaison
+      value: 
+      objectReference: {fileID: 1447526678}
+    - target: {fileID: 4989048848077673527, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: dialogueCanvasMaisonSud
       value: 
       objectReference: {fileID: 1447526678}
     - target: {fileID: 5549440291683142362, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
@@ -2309,6 +2400,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 72.55
       objectReference: {fileID: 0}
+    - target: {fileID: 5980803033928467635, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8124970003043849712, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8635706892071486946, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_Name
       value: PNJ_Ferme_ouest
@@ -2316,6 +2415,22 @@ PrefabInstance:
     - target: {fileID: 8635706892071486946, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_margin.x
+      value: 9.236633
+      objectReference: {fileID: 0}
+    - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_margin.y
+      value: 46.184074
+      objectReference: {fileID: 0}
+    - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_margin.z
+      value: 46.184082
       objectReference: {fileID: 0}
     - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_fontAsset
@@ -2330,6 +2445,10 @@ PrefabInstance:
       value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
@@ -2338,6 +2457,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+--- !u!4 &7235960561593341498 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2908025668428581596, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+  m_PrefabInstance: {fileID: 7235960561593341497}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
