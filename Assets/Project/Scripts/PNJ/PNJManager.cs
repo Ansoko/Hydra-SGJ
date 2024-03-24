@@ -11,19 +11,21 @@ public class PNJManager : MonoBehaviour
     public PNJ pNJ_Ferme_est;
     public PNJ pNJ_Ferme_ouest;
     public PNJ pNJ_Ferme_centre;
+    public PNJ pNJ_Fermes;
     public float minDist2PNJ; // Minimal distance to interact with PNJ
     public float minDistDeactivate; // Minimal distance to desactivate canvas
     public float waitBeforePlayerThink;
 
 	[SerializeField] private string dialoguePnjOuest; //ID 
-	[SerializeField] private string dialoguePnjEst1;
-	[SerializeField] private string dialoguePnjEst2;
-	[SerializeField] private string dialoguePnjSud;
+	[SerializeField] private string dialoguePnjEst;
+	[SerializeField] private string dialoguePnjFermes;
+    [SerializeField] private string dialoguePnjSud;
 	[SerializeField] private string dialoguePnjCentre;
 
+
     [SerializeField] private string playerThinkWPnjOuest; //ID 
-	[SerializeField] private string playerThinkWPnjEst1;
-	[SerializeField] private string playerThinkWPnjEst2;
+	[SerializeField] private string playerThinkWPnjEst;
+    [SerializeField] private string playerThinkWPnjFermes;
 	[SerializeField] private string playerThinkWPnjSud;
 	[SerializeField] private string playerThinkWPnjCentre;
 
@@ -34,13 +36,15 @@ public class PNJManager : MonoBehaviour
     private float dist_2_PNJ_Ferme_est;
     private float dist_2_PNJ_Ferme_ouest;
     private float dist_2_PNJ_Ferme_centre;
+    private float dist_2_PNJ_Fermes;
 
     private bool ouest_canvas_is_active = false;
     private bool centre_canvas_is_active = false;
     private bool est_canvas_is_active = false;
     private bool maison_canvas_is_active = false;
+    private bool fermes_canvas_is_active = false;
 
-    private int nb_visits_PNJ_Ferme_est;
+    // private int nb_visits_PNJ_Ferme_est;
 
 
     // Start is called before the first frame update
@@ -54,7 +58,7 @@ public class PNJManager : MonoBehaviour
         // ID of dialogues
         // dialogueOuest = dialogueOuest.GetDialogueById("10000");
 
-        nb_visits_PNJ_Ferme_est = 0;
+        // nb_visits_PNJ_Ferme_est = 0;
     }
 
     // Update is c_a_lled once per frame
@@ -65,6 +69,7 @@ public class PNJManager : MonoBehaviour
         dist_2_PNJ_Ferme_est = Distance2PNJ(player, pNJ_Ferme_est.gameObject);
         dist_2_PNJ_Ferme_ouest = Distance2PNJ(player, pNJ_Ferme_ouest.gameObject);
         dist_2_PNJ_Ferme_centre = Distance2PNJ(player, pNJ_Ferme_centre.gameObject);
+        dist_2_PNJ_Fermes = Distance2PNJ(player, pNJ_Fermes.gameObject);
         
         // Ferme Ouest
         if(!ouest_canvas_is_active && dist_2_PNJ_Ferme_ouest < minDist2PNJ)
@@ -87,6 +92,7 @@ public class PNJManager : MonoBehaviour
         // Maison Sud
         if(!maison_canvas_is_active && dist_2_PNJ_Maison_sud < minDist2PNJ)
         {
+            AudioManager.instance.PlayCat();
             pNJ_Maison_sud.dialogueBubble.InitOneDialogue(dialoguePnjSud);
             maison_canvas_is_active = true;
 
@@ -102,28 +108,14 @@ public class PNJManager : MonoBehaviour
         // Ferme Est
         if(!est_canvas_is_active && dist_2_PNJ_Ferme_est < minDist2PNJ)
         {
-            
-            if (nb_visits_PNJ_Ferme_est == 0)
-            {
-                pNJ_Ferme_est.dialogueBubble.InitOneDialogue(dialoguePnjEst1);
-                PlayerThink(playerThinkWPnjEst1);
-            }
-            if (nb_visits_PNJ_Ferme_est !=0){
-                pNJ_Ferme_est.dialogueBubble.InitOneDialogue(dialoguePnjEst2);
-                PlayerThink(playerThinkWPnjEst2);
-            }    
-                
-            Debug.Log(nb_visits_PNJ_Ferme_est);     
+            AudioManager.instance.PlayCat();
+            pNJ_Ferme_est.dialogueBubble.InitOneDialogue(dialoguePnjEst);
             est_canvas_is_active = true;
-            nb_visits_PNJ_Ferme_est += 1;
-            
+
+            // Player Thinking
+            PlayerThink(playerThinkWPnjEst);
         }
-    
 
-        
-
-         
-        
         if (est_canvas_is_active == true && dist_2_PNJ_Ferme_est > minDistDeactivate)
         {
             pNJ_Ferme_est.dialogueBubble.HideDialog();
@@ -133,6 +125,7 @@ public class PNJManager : MonoBehaviour
         // Ferme Centre
         if(!centre_canvas_is_active && dist_2_PNJ_Ferme_centre < minDist2PNJ)
         {
+            AudioManager.instance.PlayCat();
             pNJ_Ferme_centre.dialogueBubble.InitOneDialogue(dialoguePnjCentre);
             centre_canvas_is_active = true;
             // Player Thinking
@@ -142,6 +135,21 @@ public class PNJManager : MonoBehaviour
         {
             pNJ_Ferme_centre.dialogueBubble.HideDialog();
             centre_canvas_is_active = false;
+        }
+
+        // 3 Fermes
+        if(!fermes_canvas_is_active && dist_2_PNJ_Fermes < minDist2PNJ)
+        {
+            AudioManager.instance.PlayCat();
+            pNJ_Fermes.dialogueBubble.InitOneDialogue(dialoguePnjFermes);
+            fermes_canvas_is_active = true;
+            // Player Thinking
+            PlayerThink(playerThinkWPnjFermes); 
+        }
+        if (fermes_canvas_is_active == true && dist_2_PNJ_Fermes > minDistDeactivate) 
+        {
+            pNJ_Fermes.dialogueBubble.HideDialog();
+            fermes_canvas_is_active = false;
         }
         
     }
