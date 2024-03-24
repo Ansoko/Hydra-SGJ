@@ -15,14 +15,9 @@ public class PNJManager : MonoBehaviour
     public PNJ pNJ_Ferme_ouest;
     public GameObject pNJ_Ferme_centre;
     
-    public TextMeshProUGUI positionText;
-
     private Transform playerTransform;
 
     // Reference of canvas of each PNJ 
-
-
-
 
     public float minDist2PNJ = 30; // Distance minimale pour intéragir avec les PNJ -> A REDUIRE, check en mode PLAY 
     // Chat = 1 unité Unity 
@@ -51,9 +46,6 @@ public class PNJManager : MonoBehaviour
         // Log the position of the player object
         // Debug.Log("Player Position: " + playerTransform.position);
         
-        // Update the position text with the player's position
-        positionText.text = "Player Position: " + playerTransform.position.ToString();
-
         dist_2_PNJ_Maison = Distance2PNJ(player, pNJ_Maison);
         dist_2_PNJ_Ferme_sud = Distance2PNJ(player, pNJ_Ferme_sud);
         dist_2_PNJ_Ferme_ouest = Distance2PNJ(player, pNJ_Ferme_ouest.gameObject);
