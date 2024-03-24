@@ -40,7 +40,7 @@ public class PNJManager : MonoBehaviour
     private bool est_canvas_is_active = false;
     private bool maison_canvas_is_active = false;
 
-
+    private int nb_visits_PNJ_Ferme_est;
 
 
     // Start is called before the first frame update
@@ -53,6 +53,8 @@ public class PNJManager : MonoBehaviour
 
         // ID of dialogues
         // dialogueOuest = dialogueOuest.GetDialogueById("10000");
+
+        nb_visits_PNJ_Ferme_est = 0;
     }
 
     // Update is c_a_lled once per frame
@@ -100,12 +102,28 @@ public class PNJManager : MonoBehaviour
         // Ferme Est
         if(!est_canvas_is_active && dist_2_PNJ_Ferme_est < minDist2PNJ)
         {
-            pNJ_Ferme_est.dialogueBubble.InitOneDialogue(dialoguePnjEst1);
+            
+            if (nb_visits_PNJ_Ferme_est == 0)
+            {
+                pNJ_Ferme_est.dialogueBubble.InitOneDialogue(dialoguePnjEst1);
+                PlayerThink(playerThinkWPnjEst1);
+            }
+            if (nb_visits_PNJ_Ferme_est !=0){
+                pNJ_Ferme_est.dialogueBubble.InitOneDialogue(dialoguePnjEst2);
+                PlayerThink(playerThinkWPnjEst2);
+            }    
+                
+            Debug.Log(nb_visits_PNJ_Ferme_est);     
             est_canvas_is_active = true;
-
-            // Player Thinking
-            PlayerThink(playerThinkWPnjEst1);
+            nb_visits_PNJ_Ferme_est += 1;
+            
         }
+    
+
+        
+
+         
+        
         if (est_canvas_is_active == true && dist_2_PNJ_Ferme_est > minDistDeactivate)
         {
             pNJ_Ferme_est.dialogueBubble.HideDialog();
