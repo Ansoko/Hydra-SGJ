@@ -2,21 +2,18 @@ using System.Collections;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class PlayerController : MonoBehaviour
 {
 	public float moveSpeed = 1f;
 	public float gridSize = 1f;
 
-	[SerializeField] private Sprite upSprite;
-	[SerializeField] private Sprite downSprite;
-	[SerializeField] private Sprite leftSprite;
-
-
 	[HideInInspector] public Vector3 targetPosition;
 	[HideInInspector] public bool isMoving = false;
 	private int electrocution = 1;
 	private SpriteRenderer spriteRenderer;
+	private Animator animator;
 
 	public static PlayerController instance;
 	private void Awake()
@@ -27,6 +24,7 @@ public class PlayerController : MonoBehaviour
 	{
 		targetPosition = transform.position;
 		spriteRenderer = GetComponent<SpriteRenderer>();
+		animator = GetComponent<Animator>();
 	}
 	private void Update()
 	{
@@ -39,23 +37,23 @@ public class PlayerController : MonoBehaviour
 			{
 				if (movement.x < 0) // Vers la gauche
 				{
-					spriteRenderer.sprite = leftSprite;
+					animator.Play("Walk_side");
 					spriteRenderer.flipX = false;
 				}
 				else if (movement.x > 0) // Vers la droite
 				{
+					animator.Play("Walk_side");
 					spriteRenderer.flipX = true;
-					spriteRenderer.sprite = leftSprite;
 				}
 				else if (movement.y > 0) // Vers le bas
 				{
+					animator.Play("Walk_back");
 					spriteRenderer.flipX = false;
-					spriteRenderer.sprite = downSprite;
 				}
 				else if (movement.y < 0) // Vers le haut
 				{
+					animator.Play("Walk_Front");
 					spriteRenderer.flipX = false;
-					spriteRenderer.sprite = upSprite;
 				}
 
 				targetPosition = transform.position + RoundVector(movement.normalized * gridSize);
@@ -101,6 +99,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+	[SerializeField] private GameObject textInfo;
 	private IEnumerator MoveToTarget()
 	{
 		isMoving = true;
@@ -130,6 +129,8 @@ public class PlayerController : MonoBehaviour
 			}
 		}
 		isMoving = false;
+
+		textInfo.SetActive(!(GetPosOnMap().x > 36));
 
 		if (nbrTileEMRemaining > 0) EMWay();
 		else

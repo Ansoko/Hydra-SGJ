@@ -116,7 +116,6 @@ public class Dialogue : MonoBehaviour
     {
         if (index < lines.Length -1)
         {
-			Debug.Log("NextLine was " + index);
             index++;
             textComponent.text = string.Empty;
             StartCoroutine(TypeLine());
