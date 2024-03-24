@@ -1031,17 +1031,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1336369474 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 743523685877307585, guid: 3bc10968eebcb40799216a87580fc158, type: 3}
-  m_PrefabInstance: {fileID: 6023404653051142420}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 610a963fc6afb42ad99fc673adf8af1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1546884352
 GameObject:
   m_ObjectHideFlags: 0
@@ -1840,51 +1829,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5011165531481011227, guid: 3bc10968eebcb40799216a87580fc158, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1295.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 5011165531481011227, guid: 3bc10968eebcb40799216a87580fc158, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 557.83
-      objectReference: {fileID: 0}
-    - target: {fileID: 5011165531481011227, guid: 3bc10968eebcb40799216a87580fc158, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 248.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 5011165531481011227, guid: 3bc10968eebcb40799216a87580fc158, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 145.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5156900940612209260, guid: 3bc10968eebcb40799216a87580fc158, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1024304900}
-    - target: {fileID: 5156900940612209260, guid: 3bc10968eebcb40799216a87580fc158, type: 3}
-      propertyPath: pNJ_Fermes
-      value: 
-      objectReference: {fileID: 1336369474}
-    - target: {fileID: 5156900940612209260, guid: 3bc10968eebcb40799216a87580fc158, type: 3}
-      propertyPath: dialoguePnjEst
-      value: 10000
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156900940612209260, guid: 3bc10968eebcb40799216a87580fc158, type: 3}
-      propertyPath: dialoguePnjFermes
-      value: 10002
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156900940612209260, guid: 3bc10968eebcb40799216a87580fc158, type: 3}
-      propertyPath: playerThinkWPnjEst
-      value: "OK, bon \xE0 savoir \xE7a ! C'est chamusant"
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156900940612209260, guid: 3bc10968eebcb40799216a87580fc158, type: 3}
-      propertyPath: playerThinkWPnjFermes
-      value: "Mmmh ! Si il y a des vestiges ils peuvent \xEAtre profond\xE9ment enfouis
-        et ne pas \xEAtre visibles en surface\u2026"
-      objectReference: {fileID: 0}
-    - target: {fileID: 8264986242842330323, guid: 3bc10968eebcb40799216a87580fc158, type: 3}
-      propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8977810699825347042, guid: 3bc10968eebcb40799216a87580fc158, type: 3}
       propertyPath: m_Name
       value: PNJs
