@@ -38,22 +38,26 @@ public class Dialogue : MonoBehaviour
     {
         if ((Input.GetMouseButtonDown(0)||Input.GetKeyDown(KeyCode.Space)) && !isWaiting)
         {
-            if (textComponent.text == dictionnaire[lines[index]])
-            {
-                NextLine();
-            }
-            else
-            {
-                StopAllCoroutines();
-                if(index>=6) imgBackground.gameObject.SetActive(false);
-				textComponent.SetText(dictionnaire[lines[index]]);
-                RectTransform obj = GetComponentInChildren<LayoutGroup>().gameObject.transform as RectTransform;
-				GetComponentInChildren<LayoutGroup>().SetLayoutHorizontal();
-				GetComponentInChildren<LayoutGroup>().SetLayoutVertical();
-				LayoutRebuilder.ForceRebuildLayoutImmediate(obj);
-			}
+			SpaceDialogue();
         }
     }
+	private void SpaceDialogue()
+	{
+		if (textComponent.text == dictionnaire[lines[index]]) //prochain texte
+		{
+			NextLine();
+		}
+		else //passer le texte
+		{
+			StopAllCoroutines();
+			if (index >= 6) imgBackground.gameObject.SetActive(false);
+			textComponent.SetText(dictionnaire[lines[index]]);
+			RectTransform obj = GetComponentInChildren<LayoutGroup>().gameObject.transform as RectTransform;
+			GetComponentInChildren<LayoutGroup>().SetLayoutHorizontal();
+			GetComponentInChildren<LayoutGroup>().SetLayoutVertical();
+			LayoutRebuilder.ForceRebuildLayoutImmediate(obj);
+		}
+	}
     private IEnumerator WaitFor(Func<bool> untilThis){
         isWaiting = true;
 		Debug.Log("wait for action");
