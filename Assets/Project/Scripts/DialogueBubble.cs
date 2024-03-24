@@ -9,66 +9,70 @@ using System;
 
 public class DialogueBubble : MonoBehaviour
 {
-    public TextMeshProUGUI textComponent;
-    public string[] lines;
+	public TextMeshProUGUI textComponent;
+	public string[] lines;
 	public float textSpeed;
 
 
-    [SerializeField] private Image imgBackground;
-    [SerializeField] private Image rightCharacter;
+	[SerializeField] private Image imgBackground;
+	[SerializeField] private Image rightCharacter;
 	private float fadeDuration = 1f;
 
 	private int index;
-    private bool isWaiting = false;
+	private bool isWaiting = false;
 
 	// Start is called before the first frame update
 	void Start()
-    {
+	{
 		textComponent.text = string.Empty;
 		LoadCSV();
 		gameObject.SetActive(false);
-    }
+	}
 
-    private IEnumerator WaitFor(Func<bool> untilThis){
-        isWaiting = true;
+	private IEnumerator WaitFor(Func<bool> untilThis)
+	{
+		isWaiting = true;
 		yield return new WaitUntil(untilThis);
 		isWaiting = false;
 		NextLine();
-    }
+	}
 
-	void  StartDialogue(){
-        index=0;
-        StartCoroutine(TypeLine());
-    }
+	void StartDialogue()
+	{
+		index = 0;
+		StartCoroutine(TypeLine());
+	}
 
-    IEnumerator TypeLine(){
+	IEnumerator TypeLine()
+	{
 		Debug.Log(dictionnaire[lines[index]]);
-        // Type each character 1 by 1 
-        foreach (char c in dictionnaire[lines[index]].ToCharArray())
-        {
-            textComponent.text += c;
-            yield return new WaitForSeconds(textSpeed);
-        }
-		
-    }
+		// Type each character 1 by 1 
+		foreach (char c in dictionnaire[lines[index]].ToCharArray())
+		{
+			textComponent.text += c;
+			yield return new WaitForSeconds(textSpeed);
+		}
 
-	public void HideDialog(){
+	}
+
+	public void HideDialog()
+	{
 		gameObject.SetActive(false);
 	}
 
-    void NextLine()
-    {
-        if (index < lines.Length -1)
-        {
-            index++;
-            textComponent.text = string.Empty;
-            StartCoroutine(TypeLine());
-        }
-        else
-        {
-            gameObject.SetActive(false);
-        }
-    }
+	void NextLine()
+	{
+		if (index < lines.Length - 1)
+		{
+			index++;
+			textComponent.text = string.Empty;
+			StartCoroutine(TypeLine());
+		}
+		else
+		{
+			gameObject.SetActive(false);
+		}
+	}
 
 
 	private IEnumerator FadeOutCoroutine()

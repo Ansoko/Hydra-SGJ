@@ -36,15 +36,53 @@ public class Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetMouseButtonDown(0)||Input.GetKeyDown(KeyCode.Space)) && !isWaiting)
-        {
-			SpaceDialogue();
-        }
+
+		if (Input.anyKeyDown || Input.GetMouseButton(0) || Input.mouseScrollDelta != Vector2.zero)
+		{
+			switch (index)
+			{
+				case 7: //wait for input "1" or "scroll"
+					if ((Input.GetKeyDown(KeyCode.Alpha1)) || Input.mouseScrollDelta != Vector2.zero)
+					{
+						SpaceDialogue();
+					}
+					break;
+
+				case 8:
+				case 12: //wait for input "E"
+					if (Input.GetKeyDown(KeyCode.E))
+					{
+						SpaceDialogue();
+					}
+					break;
+
+				case 9: //wait for moving
+					if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+					{
+						SpaceDialogue();
+					}
+					break;
+
+				default:
+					if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)))
+					{
+						SpaceDialogue();
+					}
+					break;
+			}
+		}
     }
 	private void SpaceDialogue()
 	{
 		if (textComponent.text == dictionnaire[lines[index]]) //prochain texte
 		{
+			switch (index)
+			{
+				case 5:
+					rightCharacter.gameObject.SetActive(false);
+					StartCoroutine(FadeOutCoroutine());
+					break;
+			}
 			NextLine();
 		}
 		else //passer le texte
@@ -58,13 +96,6 @@ public class Dialogue : MonoBehaviour
 			LayoutRebuilder.ForceRebuildLayoutImmediate(obj);
 		}
 	}
-    private IEnumerator WaitFor(Func<bool> untilThis){
-        isWaiting = true;
-		Debug.Log("wait for action");
-		yield return new WaitUntil(untilThis);
-		isWaiting = false;
-		NextLine();
-    }
 
 	void StartDialogue(){
         index=0;
@@ -96,34 +127,6 @@ public class Dialogue : MonoBehaviour
 			gameObject.SetActive(false);
         }
     }
-	/*switch (index)
-                {
-                    case 5:
-						rightCharacter.gameObject.SetActive(false);
-						StartCoroutine(FadeOutCoroutine());
-						NextLine();
-						break;
-
-                    case 7: //wait for input "1" or "scroll"
-                        StartCoroutine(WaitFor(()=>(Input.GetKeyDown(KeyCode.Alpha1))|| Input.mouseScrollDelta!=Vector2.zero));
-                        break;
-
-					case 8: //wait for input "E"
-						StartCoroutine(WaitFor(() => Input.GetKeyDown(KeyCode.E)));
-						break;
-
-					case 9: //wait for moving
-						StartCoroutine(WaitFor(() => (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)));
-						break;
-
-					case 12: //wait for input "E"
-						StartCoroutine(WaitFor(() => Input.GetKeyDown(KeyCode.E)));
-						break;
-
-					default:
-						NextLine();
-                        break;
-				}*/
 
 	private IEnumerator FadeOutCoroutine()
 	{
