@@ -40,7 +40,59 @@ public class Dialogue : MonoBehaviour
         {
             if (textComponent.text == dictionnaire[lines[index]])
             {
-                switch (index)
+                NextLine();
+            }
+            else
+            {
+                StopAllCoroutines();
+                if(index>=6) imgBackground.gameObject.SetActive(false);
+				textComponent.SetText(dictionnaire[lines[index]]);
+                RectTransform obj = GetComponentInChildren<LayoutGroup>().gameObject.transform as RectTransform;
+				GetComponentInChildren<LayoutGroup>().SetLayoutHorizontal();
+				GetComponentInChildren<LayoutGroup>().SetLayoutVertical();
+				LayoutRebuilder.ForceRebuildLayoutImmediate(obj);
+			}
+        }
+    }
+    private IEnumerator WaitFor(Func<bool> untilThis){
+        isWaiting = true;
+		Debug.Log("wait for action");
+		yield return new WaitUntil(untilThis);
+		isWaiting = false;
+		NextLine();
+    }
+
+	void StartDialogue(){
+        index=0;
+        StartCoroutine(TypeLine());
+    }
+
+    IEnumerator TypeLine(){
+
+        // Type each character 1 by 1 
+        foreach (char c in dictionnaire[lines[index]].ToCharArray())
+        {
+            textComponent.text += c;
+            yield return new WaitForSeconds(textSpeed);
+        }
+    }
+
+    void NextLine()
+    {
+        if (index < lines.Length -1)
+        {
+			Debug.Log("NextLine was " + index);
+            index++;
+            textComponent.text = string.Empty;
+            StartCoroutine(TypeLine());
+        }
+        else
+        {
+			finishTuto = true;
+			gameObject.SetActive(false);
+        }
+    }
+	/*switch (index)
                 {
                     case 5:
 						rightCharacter.gameObject.SetActive(false);
@@ -67,58 +119,7 @@ public class Dialogue : MonoBehaviour
 					default:
 						NextLine();
                         break;
-				}
-                //NextLine();
-            }
-            else
-            {
-                StopAllCoroutines();
-                if(index>=6) imgBackground.gameObject.SetActive(false);
-				textComponent.SetText(dictionnaire[lines[index]]);
-                RectTransform obj = GetComponentInChildren<LayoutGroup>().gameObject.transform as RectTransform;
-				GetComponentInChildren<LayoutGroup>().SetLayoutHorizontal();
-				GetComponentInChildren<LayoutGroup>().SetLayoutVertical();
-				LayoutRebuilder.ForceRebuildLayoutImmediate(obj);
-			}
-        }
-    }
-    private IEnumerator WaitFor(Func<bool> untilThis){
-        isWaiting = true;
-		yield return new WaitUntil(untilThis);
-		isWaiting = false;
-		NextLine();
-    }
-
-	void StartDialogue(){
-        index=0;
-        StartCoroutine(TypeLine());
-    }
-
-    IEnumerator TypeLine(){
-
-        // Type each character 1 by 1 
-        foreach (char c in dictionnaire[lines[index]].ToCharArray())
-        {
-            textComponent.text += c;
-            yield return new WaitForSeconds(textSpeed);
-        }
-    }
-
-    void NextLine()
-    {
-        if (index < lines.Length -1)
-        {
-            index++;
-            textComponent.text = string.Empty;
-            StartCoroutine(TypeLine());
-        }
-        else
-        {
-			finishTuto = true;
-			gameObject.SetActive(false);
-        }
-    }
-
+				}*/
 
 	private IEnumerator FadeOutCoroutine()
 	{
@@ -145,27 +146,6 @@ public class Dialogue : MonoBehaviour
 
 	void LoadCSV()
 	{
-		/*
-		string filePath = Path.Combine(Application.streamingAssetsPath, csvFile);
-		if (File.Exists(filePath))
-		{
-			string[] linesTile = reader.ReadLine().Split(',');
-
-			for (int y = 0; y < linesTile.Length; y++)
-			{
-				string[] valuesTile = linesTile[y].Split(';');
-				dictionnaire.Add(valuesTile[0], valuesTile[1]);
-			}
-
-
-			StartDialogue();
-		}
-		else
-		{
-			Debug.LogError("CSV file not found");
-		}
-		*/
-
 		TextAsset textFile = Resources.Load<TextAsset>(csvFile);
 		using StringReader reader = new StringReader(textFile.text);
 

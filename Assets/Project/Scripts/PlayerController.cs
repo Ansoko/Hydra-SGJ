@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private TMP_Text thinkingText;
 	[SerializeField] private string noWater;
 	private Coroutine displayCoroutine;
-	public void Thinking(string txt, float duration = 3)
+	public void Thinking(string txt, float duration = 5)
 	{
 		if (displayCoroutine != null)
 		{
@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
 		displayCoroutine = null;
 	}
 
-	public IEnumerator Elect(float duration = 3)
+	public IEnumerator Elect(float duration = 5)
 	{
 		if (electrocution == -1) yield break;
 
