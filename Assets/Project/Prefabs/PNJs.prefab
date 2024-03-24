@@ -34,6 +34,7 @@ Transform:
   - {fileID: 2365462906427913245}
   - {fileID: 9000813398753062870}
   - {fileID: 5461054093771550890}
+  - {fileID: 7437217961528837674}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5156900940612209260
@@ -53,21 +54,21 @@ MonoBehaviour:
   pNJ_Ferme_est: {fileID: 5599108438675499766}
   pNJ_Ferme_ouest: {fileID: 539230873969284579}
   pNJ_Ferme_centre: {fileID: 1265116322507403581}
+  pNJ_Fermes: {fileID: 0}
   minDist2PNJ: 20
   minDistDeactivate: 30
   waitBeforePlayerThink: 2
   dialoguePnjOuest: 10008
-  dialoguePnjEst1: 10000
-  dialoguePnjEst2: 10002
+  dialoguePnjEst: 
+  dialoguePnjFermes: 
   dialoguePnjSud: 10006
   dialoguePnjCentre: 10004
   playerThinkWPnjOuest: "Miaou ! Si je veux chercher les traces d'un campement viking
     il faut que je trouve des vestiges en place, pas des objets balad\xE9s par la
     Loire ! Si il y a des vestiges ils peuvent \xEAtre profond\xE9ment enfouis et
     n'\xEAtre pas visibles en surface..."
-  playerThinkWPnjEst1: "OK, bon \xE0 chavoir \xE7a !"
-  playerThinkWPnjEst2: "Mmmh ! S'il y a des vestiges ils peuvent \xEAtre profond\xE9ment
-    enfouis et n'\xEAtre pas visibles en surface..."
+  playerThinkWPnjEst: 
+  playerThinkWPnjFermes: 
   playerThinkWPnjSud: C'est vrai que j'aimerais bien un bon petit poisson, mais la
     recherche n'attend pas !
   playerThinkWPnjCentre: "Miaoui ! Il va falloir faire chattention. En plus \xE7a
@@ -407,6 +408,136 @@ Transform:
 Canvas:
   m_CorrespondingSourceObject: {fileID: 4381644859227354420, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
   m_PrefabInstance: {fileID: 4775806691493085652}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5723283086611025142
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4593986196333222966}
+    m_Modifications:
+    - target: {fileID: 1334326195854983804, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 84c98c53e76054c5fa57646c6a9d5ec3, type: 3}
+    - target: {fileID: 2908025668428581596, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 804.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908025668428581596, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -394.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908025668428581596, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908025668428581596, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908025668428581596, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908025668428581596, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908025668428581596, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908025668428581596, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908025668428581596, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908025668428581596, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989048848077673527, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: dialogueCanvasEst
+      value: 
+      objectReference: {fileID: 3766720970265545717}
+    - target: {fileID: 4989048848077673527, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: dialogueCanvasSud
+      value: 
+      objectReference: {fileID: 3766720970265545717}
+    - target: {fileID: 4989048848077673527, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: dialogueCanvasOuest
+      value: 
+      objectReference: {fileID: 9118003815244149984}
+    - target: {fileID: 4989048848077673527, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: dialogueCanvasCentre
+      value: 
+      objectReference: {fileID: 7529045655068495934}
+    - target: {fileID: 4989048848077673527, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: dialogueCanvasMaison
+      value: 
+      objectReference: {fileID: 6871460570021547842}
+    - target: {fileID: 4989048848077673527, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: dialogueCanvasMaisonSud
+      value: 
+      objectReference: {fileID: 6871460570021547842}
+    - target: {fileID: 5549440291683142362, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1094.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549440291683142362, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 380.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549440291683142362, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 22.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549440291683142362, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 56.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635706892071486946, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_Name
+      value: PNJ_Fermes
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635706892071486946, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 53dde2e532f39cf41bdf3d0c251c21a8, type: 2}
+    - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7636589296193103404, guid: 53dde2e532f39cf41bdf3d0c251c21a8, type: 2}
+    - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8807790973787798034, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+--- !u!4 &7437217961528837674 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2908025668428581596, guid: 9d8fc3ccf7f3f4ba493543a8f8d9b06d, type: 3}
+  m_PrefabInstance: {fileID: 5723283086611025142}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6102995322611950858
 PrefabInstance:
