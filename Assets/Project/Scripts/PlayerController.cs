@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -61,7 +62,15 @@ public class PlayerController : MonoBehaviour
 				switch (DatasEnvironement.Instance.tilesDatas[GetPosOnMap()].type)
 				{
 					case 4:
+					case 15:
+					case 16:
+					case 17:
+					case 18:
+					case 19:
 					case 30:
+					case 31:
+					case 32:
+					case 33: 
 						AudioManager.instance.PlayConcrete();
 						break;
 					case 1:
@@ -70,6 +79,9 @@ public class PlayerController : MonoBehaviour
 						break;
 					case 3:
 					case 10:
+					case 11:
+					case 12:
+					case 13:
 						AudioManager.instance.PlayGrass();
 						break;
 				}

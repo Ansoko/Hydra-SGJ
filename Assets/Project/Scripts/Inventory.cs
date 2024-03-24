@@ -184,7 +184,7 @@ public class Inventory : MonoBehaviour
 
 	private void Datation(Vector2 pos)
 	{
-		Debug.Log(DatasEnvironement.Instance.GetCharbValue(pos));
+		//Debug.Log(DatasEnvironement.Instance.GetCharbValue(pos));
 		if (DatasEnvironement.Instance.tilesDatas[pos].sandRevealed)
 		{
 			AudioManager.instance.PlayC14();
@@ -199,7 +199,11 @@ public class Inventory : MonoBehaviour
 					break;
 				case 1://argile
 				case 101://sable + argile
-					Dialogue.instance.InitOneDialogue("1005");
+						 //Dialogue.instance.InitOneDialogue("1005");
+
+					//endGame
+					EndGame(Dialogue.instance.GetDialogueById("1005"));
+
 					if (pos.x > 36) ChangePortefeuille(-priceDatation);
 					break;
 

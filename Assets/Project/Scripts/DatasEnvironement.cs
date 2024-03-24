@@ -68,6 +68,62 @@ public class DatasEnvironement : MonoBehaviour
 
 	void LoadCSV()
 	{
+
+		TextAsset textFileTile = Resources.Load<TextAsset>(csvFileTile);
+		TextAsset textFileConduct = Resources.Load<TextAsset>(csvFileConduct);
+		TextAsset textFileSand = Resources.Load<TextAsset>(csvFileSand);
+		TextAsset textFileAleas = Resources.Load<TextAsset>(csvFileAleas);
+		TextAsset textFileCharb = Resources.Load<TextAsset>(csvFileCharbons);
+		using StringReader readerTile = new StringReader(textFileTile.text);
+		using StringReader readerConduct = new StringReader(textFileConduct.text);
+		using StringReader readerSand = new StringReader(textFileSand.text);
+		using StringReader readerAleas = new StringReader(textFileAleas.text);
+		using StringReader readerCharb = new StringReader(textFileCharb.text);
+		int y = 0;
+
+		while (true)
+		{
+			string lineTile = readerTile.ReadLine();
+			string lineConduct = readerConduct.ReadLine();
+			string lineSand = readerSand.ReadLine();
+			string lineAleas = readerAleas.ReadLine();
+			string lineCharb = readerCharb.ReadLine();
+
+			if (lineTile == string.Empty || lineTile == null)
+			{
+				break;
+			}
+
+			string[] valuesTile = lineTile.Split(',');
+			string[] valuesConduct = lineConduct.Split(';');
+			string[] valuesSand = lineSand.Split(';');
+			string[] valuesAleas = lineAleas.Split(',');
+			string[] valuesCharb = lineCharb.Split(',');
+
+			for (int x = 0; x < valuesTile.Length; x++)
+			{
+				int tileIndexType = int.Parse(valuesTile[x]);
+				float indexConduct = float.Parse(valuesConduct[x], CultureInfo.InvariantCulture);
+				float tileIndexSand = float.Parse(valuesSand[x], CultureInfo.InvariantCulture);
+				int indexAlea = int.Parse(valuesAleas[x]);
+				int indexCharb = int.Parse(valuesCharb[x]);
+
+				switch (tileIndexType)
+				{
+					case 10:
+						tilemap.SetTile(new Vector3Int(x, -y, 0), TilesTypesDict[tileIndexType + Random.Range(0, 3)]);
+						break;
+
+					default:
+						tilemap.SetTile(new Vector3Int(x, -y, 0), TilesTypesDict[tileIndexType]);
+						break;
+				}
+				tilesDatas.Add(new Vector2(x, -y), new(tileIndexType, indexConduct, tileIndexSand, indexAlea, indexCharb));
+			}
+			y++;
+		}
+
+		/*
 		string filePathTile = Path.Combine(Application.streamingAssetsPath, csvFileTile);
 		string filePathConduct = Path.Combine(Application.streamingAssetsPath, csvFileConduct);
 		string filePathSand = Path.Combine(Application.streamingAssetsPath, csvFileSand);
@@ -76,6 +132,7 @@ public class DatasEnvironement : MonoBehaviour
 
 		if (File.Exists(filePathTile)&& File.Exists(filePathSand) && File.Exists(filePathAlea) && File.Exists(filePathConduct))
 		{
+
 			string[] linesTile = File.ReadAllLines(filePathTile);
 			string[] linesConduct = File.ReadAllLines(filePathConduct);
 			string[] linesSand = File.ReadAllLines(filePathSand);
@@ -116,6 +173,7 @@ public class DatasEnvironement : MonoBehaviour
 		{
 			Debug.LogError("CSV file not found");
 		}
+		*/
 	}
 
 	public float GetConductValue(Vector2 pos)

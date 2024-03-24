@@ -885,11 +885,11 @@ MonoBehaviour:
     - {fileID: 11400000, guid: ebfd5836e6a385d4695ce4fc3f700787, type: 2}
     - {fileID: 11400000, guid: d8c2151bd0366484bb20c9d18e4ca8b8, type: 2}
     values: ff0000000100000002000000030000000a0000001e000000040000000f000000100000001100000012000000130000001f00000020000000210000000b0000000c0000000d000000
-  csvFileTile: GRID_type.csv
-  csvFileConduct: GRID_conduct.csv
-  csvFileSand: GRID_sable.csv
-  csvFileAleas: GRID_aleas.csv
-  csvFileCharbons: GRID_charbons.csv
+  csvFileTile: GRID_type
+  csvFileConduct: GRID_conduct
+  csvFileSand: GRID_sable
+  csvFileAleas: GRID_aleas
+  csvFileCharbons: GRID_charbons
   FlagsParent: {fileID: 6876476812185762021}
 --- !u!1 &8884654894744076687
 GameObject:

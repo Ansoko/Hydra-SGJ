@@ -48,8 +48,8 @@ public class Dialogue : MonoBehaviour
 						NextLine();
 						break;
 
-                    case 7: //wait for input "1"
-                        StartCoroutine(WaitFor(()=>Input.GetKeyDown(KeyCode.Alpha1)));
+                    case 7: //wait for input "1" or "scroll"
+                        StartCoroutine(WaitFor(()=>(Input.GetKeyDown(KeyCode.Alpha1))|| Input.mouseScrollDelta!=Vector2.zero));
                         break;
 
 					case 8: //wait for input "E"
@@ -145,11 +145,11 @@ public class Dialogue : MonoBehaviour
 
 	void LoadCSV()
 	{
+		/*
 		string filePath = Path.Combine(Application.streamingAssetsPath, csvFile);
-
 		if (File.Exists(filePath))
 		{
-			string[] linesTile = File.ReadAllLines(filePath);
+			string[] linesTile = reader.ReadLine().Split(',');
 
 			for (int y = 0; y < linesTile.Length; y++)
 			{
@@ -163,6 +163,22 @@ public class Dialogue : MonoBehaviour
 		else
 		{
 			Debug.LogError("CSV file not found");
+		}
+		*/
+
+		TextAsset textFile = Resources.Load<TextAsset>(csvFile);
+		using StringReader reader = new StringReader(textFile.text);
+
+		while (true)
+		{
+			string line = reader.ReadLine();
+			if (line == string.Empty || line == null)
+			{
+				break;
+			}
+			string[] values = line.Split(';');
+			dictionnaire.Add(values[0], values[1]);
+
 		}
 	}
 

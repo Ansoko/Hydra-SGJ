@@ -817,7 +817,7 @@ MonoBehaviour:
   textSpeed: 0.01
   imgBackground: {fileID: 813756131}
   rightCharacter: {fileID: 701015992}
-  csvFile: dialogues.csv
+  csvFile: dialogues
 --- !u!114 &1328332702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1411,6 +1411,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5184936839847558374, guid: 8d035039f359a1b4db4e65c72277d264, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6289403316381963638, guid: 8d035039f359a1b4db4e65c72277d264, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1698,8 +1702,8 @@ SceneRoots:
   - {fileID: 1284928329}
   - {fileID: 4622822888397190691}
   - {fileID: 4806429089745154859}
-  - {fileID: 93297473320770581}
   - {fileID: 881196193}
   - {fileID: 1268285606}
   - {fileID: 1328332705}
+  - {fileID: 93297473320770581}
   - {fileID: 1563726095}
