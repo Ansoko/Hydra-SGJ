@@ -63,17 +63,11 @@ MonoBehaviour:
   dialoguePnjFermes: 10002
   dialoguePnjSud: 10006
   dialoguePnjCentre: 10004
-  playerThinkWPnjOuest: "Miaou ! Si je veux chercher les traces d'un campement viking
-    il faut que je trouve des vestiges en place, pas des objets balad\xE9s par la
-    Loire ! Si il y a des vestiges ils peuvent \xEAtre profond\xE9ment enfouis et
-    n'\xEAtre pas visibles en surface..."
-  playerThinkWPnjEst: "OK, bon \xE0 savoir \xE7a ! C'est chamusant"
-  playerThinkWPnjFermes: "Mmmh ! Si il y a des vestiges ils peuvent \xEAtre profond\xE9ment
-    enfouis et ne pas \xEAtre visibles en surface\u2026"
-  playerThinkWPnjSud: C'est vrai que j'aimerais bien un bon petit poisson, mais la
-    recherche n'attend pas !
-  playerThinkWPnjCentre: "Miaoui ! Il va falloir faire chattention. En plus \xE7a
-    peut modifier mon signal \xE9lectromagn\xE9tique !"
+  playerThinkWPnjOuest: 10009
+  playerThinkWPnjEst: 10001
+  playerThinkWPnjFermes: 10003
+  playerThinkWPnjSud: 10007
+  playerThinkWPnjCentre: 10005
 --- !u!1001 &614932712185724609
 PrefabInstance:
   m_ObjectHideFlags: 0

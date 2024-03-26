@@ -80,7 +80,7 @@ public class PNJManager : MonoBehaviour
             ouest_canvas_is_active = true;
             
             // Player Thinking
-            PlayerThink(playerThinkWPnjOuest);
+            PlayerThink(Dialogue.instance.GetDialogueById(playerThinkWPnjOuest));
         
         }
         if (ouest_canvas_is_active && dist_2_PNJ_Ferme_ouest > minDistDeactivate) 
@@ -97,7 +97,7 @@ public class PNJManager : MonoBehaviour
             maison_canvas_is_active = true;
 
             // Player Thinking
-            PlayerThink(playerThinkWPnjSud);
+            PlayerThink(Dialogue.instance.GetDialogueById(playerThinkWPnjSud));
         }
         if (maison_canvas_is_active == true && dist_2_PNJ_Maison_sud > minDistDeactivate) 
         {
@@ -113,7 +113,7 @@ public class PNJManager : MonoBehaviour
             est_canvas_is_active = true;
 
             // Player Thinking
-            PlayerThink(playerThinkWPnjEst);
+            PlayerThink(Dialogue.instance.GetDialogueById(playerThinkWPnjEst));
         }
 
         if (est_canvas_is_active == true && dist_2_PNJ_Ferme_est > minDistDeactivate)
@@ -129,7 +129,7 @@ public class PNJManager : MonoBehaviour
             pNJ_Ferme_centre.dialogueBubble.InitOneDialogue(dialoguePnjCentre);
             centre_canvas_is_active = true;
             // Player Thinking
-            PlayerThink(playerThinkWPnjCentre); 
+            PlayerThink(Dialogue.instance.GetDialogueById(playerThinkWPnjCentre)); 
         }
         if (centre_canvas_is_active == true && dist_2_PNJ_Ferme_centre > minDistDeactivate) 
         {
@@ -144,7 +144,7 @@ public class PNJManager : MonoBehaviour
             pNJ_Fermes.dialogueBubble.InitOneDialogue(dialoguePnjFermes);
             fermes_canvas_is_active = true;
             // Player Thinking
-            PlayerThink(playerThinkWPnjFermes); 
+            PlayerThink(Dialogue.instance.GetDialogueById(playerThinkWPnjFermes));
         }
         if (fermes_canvas_is_active == true && dist_2_PNJ_Fermes > minDistDeactivate) 
         {

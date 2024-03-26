@@ -4,7 +4,6 @@ using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.IO;
-using UnityEngine.Events;
 using System;
 
 public class DialogueBubble : MonoBehaviour
@@ -19,7 +18,6 @@ public class DialogueBubble : MonoBehaviour
 	private float fadeDuration = 1f;
 
 	private int index;
-	private bool isWaiting = false;
 
 	// Start is called before the first frame update
 	void Start()
@@ -27,14 +25,6 @@ public class DialogueBubble : MonoBehaviour
 		textComponent.text = string.Empty;
 		LoadCSV();
 		gameObject.SetActive(false);
-	}
-
-	private IEnumerator WaitFor(Func<bool> untilThis)
-	{
-		isWaiting = true;
-		yield return new WaitUntil(untilThis);
-		isWaiting = false;
-		NextLine();
 	}
 
 	void StartDialogue()
@@ -45,7 +35,7 @@ public class DialogueBubble : MonoBehaviour
 
 	IEnumerator TypeLine()
 	{
-		Debug.Log(dictionnaire[lines[index]]);
+		//Debug.Log(dictionnaire[lines[index]]);
 		// Type each character 1 by 1 
 		foreach (char c in dictionnaire[lines[index]].ToCharArray())
 		{

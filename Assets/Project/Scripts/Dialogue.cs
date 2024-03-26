@@ -4,8 +4,6 @@ using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.IO;
-using UnityEngine.Events;
-using System;
 
 public class Dialogue : MonoBehaviour
 {
@@ -15,10 +13,11 @@ public class Dialogue : MonoBehaviour
 
     [SerializeField] private Image imgBackground;
     [SerializeField] private Image rightCharacter;
+    [SerializeField] private TMP_Text textSpaceToContinue;
+    [SerializeField] private GameObject buttonSkipTuto;
 	private float fadeDuration = 1f;
 
 	private int index;
-    private bool isWaiting = false;
 
 	public static Dialogue instance;
 	private void Awake()
@@ -36,7 +35,6 @@ public class Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
 		if (Input.anyKeyDown || Input.GetMouseButton(0) || Input.mouseScrollDelta != Vector2.zero)
 		{
 			switch (index)
@@ -44,11 +42,14 @@ public class Dialogue : MonoBehaviour
 				case 7: //wait for input "1" or "scroll"
 					if ((Input.GetKeyDown(KeyCode.Alpha1)) || Input.mouseScrollDelta != Vector2.zero)
 					{
+						PassTextContinue(false);
 						SpaceDialogue();
 					}
 					break;
 
 				case 8:
+					PassTextContinue(false);
+					goto case 12;
 				case 12: //wait for input "E"
 					if (Input.GetKeyDown(KeyCode.E))
 					{
@@ -59,13 +60,23 @@ public class Dialogue : MonoBehaviour
 				case 9: //wait for moving
 					if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
 					{
+						PassTextContinue(false);
 						SpaceDialogue();
 					}
 					break;
 
+				case 6:
+				case 11:
+					if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)))
+					{
+						PassTextContinue(false);
+						SpaceDialogue();
+					}
+					break;
 				default:
 					if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)))
 					{
+						PassTextContinue();
 						SpaceDialogue();
 					}
 					break;
@@ -96,6 +107,15 @@ public class Dialogue : MonoBehaviour
 			LayoutRebuilder.ForceRebuildLayoutImmediate(obj);
 		}
 	}
+	private void PassTextContinue(bool show = true) {
+		if (!show /*&& textComponent.text == dictionnaire[lines[index]]*/)
+		{
+			textSpaceToContinue.text = " ";
+			return;
+		}
+
+		textSpaceToContinue.text = "<b>Espace</b> pour continuer";
+	}
 
 	void StartDialogue(){
         index=0;
@@ -123,9 +143,20 @@ public class Dialogue : MonoBehaviour
         else
         {
 			finishTuto = true;
+			buttonSkipTuto.SetActive(false);
 			gameObject.SetActive(false);
         }
     }
+	public void SkipTuto()
+	{
+		rightCharacter.gameObject.SetActive(false);
+		//StartCoroutine(FadeOutCoroutine());
+		imgBackground.gameObject.SetActive(false);
+		buttonSkipTuto.SetActive(false);
+		index = lines.Length;
+		finishTuto = true;
+		gameObject.SetActive(false);
+	}
 
 	private IEnumerator FadeOutCoroutine()
 	{
@@ -179,19 +210,6 @@ public class Dialogue : MonoBehaviour
 		StopAllCoroutines();
 		lines = new string[1];
 		lines[0] = txt;
-		gameObject.SetActive(true);
-		textComponent.text = string.Empty;
-		StartDialogue();
-	}
-	private int newDict = 0;
-	public void InitOneNewDialogue(string txt)
-	{
-		if (!finishTuto) return;
-		StopAllCoroutines();
-		newDict--;
-		dictionnaire.Add(newDict.ToString(), txt);
-		lines = new string[1];
-		lines[0] = newDict.ToString();
 		gameObject.SetActive(true);
 		textComponent.text = string.Empty;
 		StartDialogue();

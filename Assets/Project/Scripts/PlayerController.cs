@@ -1,13 +1,12 @@
 using System.Collections;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class PlayerController : MonoBehaviour
 {
 	public float moveSpeed = 1f;
 	public float gridSize = 1f;
+	[SerializeField] private GameObject cercleAnimation;
 
 	[HideInInspector] public Vector3 targetPosition;
 	[HideInInspector] public bool isMoving = false;
@@ -22,6 +21,7 @@ public class PlayerController : MonoBehaviour
 	}
 	private void Start()
 	{
+		cercleAnimation?.SetActive(false);
 		targetPosition = transform.position;
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		animator = GetComponent<Animator>();
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
 					case 30:
 					case 31:
 					case 32:
-					case 33: 
+					case 33:
 						AudioManager.instance.PlayConcrete();
 						break;
 					case 1:
@@ -84,6 +84,10 @@ public class PlayerController : MonoBehaviour
 						break;
 				}
 				StartCoroutine(MoveToTarget());
+			}
+			else
+			{
+				animator.Play("Idle");
 			}
 
 			if (Input.GetKeyDown(KeyCode.E))
@@ -118,7 +122,7 @@ public class PlayerController : MonoBehaviour
 			if (DatasEnvironement.Instance.IsWater(GetPosOnMap()))
 				Thinking(noWater);
 			else
-				Thinking("C'est une propriété privée, je ne peux pas passer par ici.");
+				Thinking(Dialogue.instance.GetDialogueById("1012"));
 			AudioManager.instance.PlayCatNo();
 			targetPosition = oldPos;
 			while (transform.position != targetPosition)
@@ -186,9 +190,11 @@ public class PlayerController : MonoBehaviour
 	public IEnumerator Elect(float duration = 5)
 	{
 		if (electrocution == -1) yield break;
-
+		
+		cercleAnimation.SetActive(true);
 		electrocution = -1;
 		yield return new WaitForSeconds(duration);
+		cercleAnimation.SetActive(false);
 		electrocution = 1;
 	}
 }

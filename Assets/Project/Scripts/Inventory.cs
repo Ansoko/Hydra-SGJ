@@ -161,21 +161,30 @@ public class Inventory : MonoBehaviour
 		AudioManager.instance.PlayTariere();
 		if(pos.x>36) ChangePortefeuille(-priceTariere);
 
-		switch(DatasEnvironement.Instance.GetAlea(pos)) { //aléa !!
+		if (DatasEnvironement.Instance.IsRoad(pos)){
+			PlayerController.instance.Thinking(Dialogue.instance.GetDialogueById("1007"));
+			AudioManager.instance.PlayCatNo();
+			return;
+		}
+
+		switch (DatasEnvironement.Instance.GetAlea(pos)) { //aléa !!
+			/*
 			case 10:
 				PlayerController.instance.Thinking("Je ne peux pas creuser dans la route.");
 				AudioManager.instance.PlayCatNo();
 				return;
+			*/
 			case 20:
-				PlayerController.instance.Thinking("Gzzzt MIAOU ! Ca, c'était un cable éléctrique souterrain !");
+				PlayerController.instance.Thinking(Dialogue.instance.GetDialogueById("1008"));
 				StartCoroutine(PlayerController.instance.Elect());
 				AudioManager.instance.PlayBzz();
 				return;
 			case 30:
-				PlayerController.instance.Thinking("Impossible de creuser ici, on dirait qu'il y a des graviers compacté là dessous !");
+				PlayerController.instance.Thinking(Dialogue.instance.GetDialogueById("1009"));
 				AudioManager.instance.PlayCatNo();
 				return;
 		}
+		
 
 		PlaceFlag(pos, Color.white);
 		DatasEnvironement.Instance.RevealSand(pos);
@@ -191,19 +200,17 @@ public class Inventory : MonoBehaviour
 			switch (DatasEnvironement.Instance.GetCharbValue(pos))
 			{
 				case 0:
-					Dialogue.instance.InitOneNewDialogue("Il n'y a pas de charbon dans le sol à analyser.");
+					Dialogue.instance.InitOneDialogue("1010");
 					break;
 				case 100: //sable 
 					Dialogue.instance.InitOneDialogue("1004");
 					if (pos.x > 36) ChangePortefeuille(-priceDatation);
 					break;
 				case 1://argile
-				case 101://sable + argile
+				case 101://sable + argile //endgame
 					//Dialogue.instance.InitOneDialogue("1005");
-					//endGame
 					EndGame(Dialogue.instance.GetDialogueById("1005"));
-
-					if (pos.x > 36) ChangePortefeuille(-priceDatation);
+					//if (pos.x > 36) ChangePortefeuille(-priceDatation);
 					break;
 
 			}
@@ -212,13 +219,13 @@ public class Inventory : MonoBehaviour
 		else
 		{
 			AudioManager.instance.PlayCat();
-			Dialogue.instance.InitOneNewDialogue("J'ai besoin de prélever des charbons du sol avec la tarière avant de les analyser.");
+			Dialogue.instance.InitOneDialogue("1011");
 		}
 	}
 
 
 	//Flag
-	private HashSet<Vector2> flagsPlaced = new HashSet<Vector2>();
+	private readonly HashSet<Vector2> flagsPlaced = new();
 	public void PlaceFlag(Vector2 pos, Color couleur)
 	{
 		if (!flagsPlaced.Contains(pos)) //place flag
@@ -286,18 +293,19 @@ public class Inventory : MonoBehaviour
 
 		}
 	}
+	private bool warningSaid = false;
 	public void ChangePortefeuille(int price)
 	{
 		portefeuilleCroquette += price;
 		portefeuilleText.text = "Portefeuille : \r\n<b>" +portefeuilleCroquette+"</b> croquettes";
 
-		if (portefeuilleCroquette < priceDatation * 2)
+		if (portefeuilleCroquette < priceDatation) EndGame(Dialogue.instance.GetDialogueById("1001"));
+		else if (portefeuilleCroquette < priceDatation * 1.6f && !warningSaid)
 		{
 			Dialogue.instance.InitOneDialogue("1000");
+			warningSaid = true;
 		}
-
-		if (portefeuilleCroquette < priceDatation) EndGame("C’est fini pour aujourd'hui, je n’ai même plus assez de croquettes pour financer une datation… Il faudra mieux gérer nos ressources la prochaine fois. En attendant, il n'y a plus qu'à chercher de nouveaux financements.");
-		if (portefeuilleCroquette < 0) EndGame("Plus de croquette pour continuer les recherches, il faudra mieux gérer nos ressources la prochaine fois... En attendant, il n'y a plus qu'à chercher de nouveaux financements.");
+		//else if (portefeuilleCroquette < 0) EndGame("Plus de croquette pour continuer les recherches, il faudra mieux gérer nos ressources la prochaine fois... En attendant, il n'y a plus qu'à chercher de nouveaux financements.");
 	}
 
 

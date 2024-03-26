@@ -23,7 +23,7 @@ public class DatasEnvironement : MonoBehaviour
 
 	public class TileData
 	{
-		public int type; // 255 eau, 1 bois, 2 marais, 3 ferme, 4 route, 10 prairie, 30 pont
+		public int type; // 255 eau, 1 bois, 2 marais, 3 ferme, 4/15/16/17/18/19/31/32/33 route, 10 prairie, 30 pont
 		public float conductivite;
 		public float sand;
 		public int alea; //
@@ -36,7 +36,7 @@ public class DatasEnvironement : MonoBehaviour
 			this.type = type;
 			this.sand = sand;
 			this.conductivite = conductivite;
-			this.alea = alea; //10 route actuelles, 20 cables enterré, 30 ancienne route 
+			this.alea = alea; //10 route actuelles (unused), 20 cables enterré, 30 ancienne route 
 			this.charbons = charbons; // 0 rien, 100 sable, 1 limon, 101 sable + limon
 		}
 	}
@@ -96,7 +96,7 @@ public class DatasEnvironement : MonoBehaviour
 
 			string[] valuesTile = lineTile.Split(',');
 			string[] valuesConduct = lineConduct.Split(',');
-			string[] valuesSand = lineSand.Split(';');
+			string[] valuesSand = lineSand.Split(',');
 			string[] valuesAleas = lineAleas.Split(',');
 			string[] valuesCharb = lineCharb.Split(',');
 
@@ -122,58 +122,6 @@ public class DatasEnvironement : MonoBehaviour
 			}
 			y++;
 		}
-
-		/*
-		string filePathTile = Path.Combine(Application.streamingAssetsPath, csvFileTile);
-		string filePathConduct = Path.Combine(Application.streamingAssetsPath, csvFileConduct);
-		string filePathSand = Path.Combine(Application.streamingAssetsPath, csvFileSand);
-		string filePathAlea = Path.Combine(Application.streamingAssetsPath, csvFileAleas);
-		string filePathCharb = Path.Combine(Application.streamingAssetsPath, csvFileCharbons);
-
-		if (File.Exists(filePathTile)&& File.Exists(filePathSand) && File.Exists(filePathAlea) && File.Exists(filePathConduct))
-		{
-
-			string[] linesTile = File.ReadAllLines(filePathTile);
-			string[] linesConduct = File.ReadAllLines(filePathConduct);
-			string[] linesSand = File.ReadAllLines(filePathSand);
-			string[] linesAleas = File.ReadAllLines(filePathAlea);
-			string[] linesCharb = File.ReadAllLines(filePathCharb);
-
-			for (int y = 0; y < linesTile.Length; y++)
-			{
-				string[] valuesTile = linesTile[y].Split(',');
-				string[] valuesConduct = linesConduct[y].Split(';');
-				string[] valuesSand = linesSand[y].Split(';');
-				string[] valuesAleas = linesAleas[y].Split(',');
-				string[] valuesCharb = linesCharb[y].Split(',');
-
-				for (int x = 0; x < valuesTile.Length; x++)
-				{
-					int tileIndexType = int.Parse(valuesTile[x]);
-					float indexConduct = float.Parse(valuesConduct[x], CultureInfo.InvariantCulture);
-					float tileIndexSand = float.Parse(valuesSand[x], CultureInfo.InvariantCulture);
-					int indexAlea = int.Parse(valuesAleas[x]);
-					int indexCharb = int.Parse(valuesCharb[x]);
-
-					switch (tileIndexType)
-					{
-						case 10:
-							tilemap.SetTile(new Vector3Int(x, -y, 0), TilesTypesDict[tileIndexType+ Random.Range(0, 3)]);
-							break;
-
-						default:
-							tilemap.SetTile(new Vector3Int(x, -y, 0), TilesTypesDict[tileIndexType]);
-							break;
-					}
-					tilesDatas.Add(new Vector2(x, -y), new(tileIndexType, indexConduct, tileIndexSand, indexAlea, indexCharb));
-				}
-			}
-		}
-		else
-		{
-			Debug.LogError("CSV file not found");
-		}
-		*/
 	}
 
 	public float GetConductValue(Vector2 pos)
@@ -194,7 +142,12 @@ public class DatasEnvironement : MonoBehaviour
 	}
 	public bool IsWater(Vector2 pos)
 	{
-		return tilesDatas[pos].type.Equals(255);
+		return !tilesDatas.ContainsKey(pos) || tilesDatas[pos].type.Equals(255);
+	}
+	private readonly HashSet<int> roadsTilesNumbers = new HashSet<int>() { 4, 15, 16, 17, 18, 19, 30, 31, 32, 33 };
+	public bool IsRoad(Vector2 pos)
+	{
+		return roadsTilesNumbers.Contains(tilesDatas[pos].type);
 	}
 }
 

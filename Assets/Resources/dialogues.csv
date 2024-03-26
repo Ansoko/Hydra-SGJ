@@ -1,32 +1,41 @@
-1;Miallo ? Charkéo ? C'est Charchiviste !<br>J'ai fait une découverte qui va t'intéresser, dans un parchemin du Xe s. trouvé aux archives d'Angers.<br>Ça concerne tes recherches sur les Vikings !
+1;Miallo ? Charkéo ? C'est Charchiviste !<br>J'ai fait une découverte qui va t'intéresser, dans un parchemin du Xe siècle trouvé aux archives d'Angers.<br>Ça concerne tes recherches sur les Vikings !
 2;Tu m'intrigues Charchiviste, raconte  !
-3;Ça parle des vikings qui ont attaqué l'abbaye de Saint-Florent-le-Vieil en 853, dans les Miraculi d'Adrevald.<br>Écoute ça : "Interea stationem navium suarum, ac si asilum..." "omnium latrunculorum, in insula quadam coenobio Sancti Florentii subposita componentes"
+3;Ça parle des vikings qui ont attaqué l'abbaye de Saint-Florent-le-Vieil en 853, dans les Miraculi d'Adrevald.<br>Écoute ça : "Interea stationem navium suarum, ac si asilum omnium latrunculorum, in insula quadam coenobio Sancti Florentii subposita componentes"...
 4;Heu.. en français s'il te plaît, tu connais mon piètre niveau en latin...
-5;Ah oui, pardon ! Alors donc après avoir attaqué l'abbaye le texte parle de ce que les vikings ont fait :<br> "Cependant, aménageant un abri pour leurs navires, un asile pour tous les pirates, dans une île située au pied du monastère de Saint-Florent, ils édifièrent aussi des cabanes formant une sorte de bourg pour y garder en esclavage des troupes de captifs enchaînés, et, à l'occasion, y refaire leurs forces et se retrouver prêts à repartir derechef en expédition."
-6;Génial ! Je prends l'appareil de mesure électromagnétique..! Et la tarière à mains aussi ! Et je file sur l'île au pied de l'abbaye pour chercher cet ancien campement.<br>Miaou ! Je te tiens au courant Charchiviste, et merci du tuyau, allons explorer !
-100;Hum...Vu que les sables arrivent dans le secteur de la Loire essentiellement à partir du XIIIe s., il faut d'abord que j'arrive à localiser une île faite de limons et d'argiles, noyés dans ces chables plus récents...
-101;Essayons d’abord de calibrer un peu notre appareil électromagnétique EM31. Il faut d'abord que je m'en équipe. Hum…en selectionnant l'outil avec la molette ou appuyant sur la <b>touche 1</b>, je devras pouvoir m'en équiper.
-102;Parfait ! Mais le matériel coûte cher, je vais devoir <b>dépenser des croquettes</b> pour l'utiliser..J'ai a peu près 2000 unités. Juste assez pour compléter l'expédition ! Heureusement que le calibrage ne me coute rien pour la phase de test, je peux essayer de l'utiliser maintenant. La <b>touche E</b> devrait faire l'affaire.
-103;Parfait ! Ca semble marcher ! je peux récolter des données jusqu'à <b>10 cases</b> avec l'EM31. Voyons voir...
-104;Super ça fonctionne ! Alors… quand l'EM31 m’indique une valeur très conductrice et fait un son aigu, ça signifie que j’ai pas mal de limons et d’argile, et donc que je me rapproche de l’ancienne île que je cherche. C'est bien ca ! Le son sera mon guide ! 
-105;À l’inverse, si j’ai une grosse épaisseur de chable, peu de chance que cette ancienne île soit là, donc l’EM31 fait un son plus grave car le sous-sol est moins conducteur. Sur les routes ca s'affole, normal avec le goudron…Ça ne sert à rien d’y faire des mesures, je perdrais des croquettes inutilement…Et impossible d'en récupérer sur l'île, je dois faire attention !
-106;Miaou ! A présent la tarière à main ! Elle me permet de faire des trous discrets mais profonds dans le sol. Je l'équipe avec le bouton <b>2</b> (ou la molette !), et l'utilise toujours avec <b>E</b>. Voyons voir...
-107;Si j’ai de la chance, je peux trouver des charbons de bois…Un autre indice. On en trouve toujours quand il y a des traces d’occupations anciennes…
-108;Une fois les charbons collectés dans des zones vraiment <b>fortes en argile</b>, il me restera à m’en servir pour faire des datations au carbone 14. Mais ca coute tellement cher alors autant en être sûr et certain miaou !!
-109;Si je retrouve cette ancienne île avec une datation carbone 14 qui montre qu’elle a été occupée au IXe siècle, il ne restera plus qu’à aller y faire des sondages, quand on pourra y revenir avec mes collègues charkéologues.<br> On pourra alors déterminer si on trouve bien des traces de vikings ou d’autres personnes du IXe s. Mais je dois trouver ces charbons dans l'argile...Pas dans le sable, c'est trop récent !
-1000;Chattention ! Si je continue à utiliser autant de croquettes, il ne m’en restera plus pour financer des datations au carbone 14 ! C'est l'echec assuré !
-1001;C’est fini pour aujourd'hui Je n’ai même plus assez de croquettes pour financer une datation…
+5;Ah oui, pardon ! Alors donc après avoir attaqué l'abbaye le texte parle de ce que les Vikings ont fait :<br>"Cependant, aménageant un abri pour leurs navires, un asile pour tous les pirates, dans une île située au pied du monastère de Saint-Florent, ils édifièrent aussi des cabanes formant une sorte de bourg pour y garder en esclavage des troupes de captifs enchaînés, et, à l'occasion, y refaire leurs forces et se retrouver prêts à repartir derechef en expédition."
+6;Génial ! Je prends l'appareil de mesure électromagnétique ! Et la tarière à main aussi ! Et je file sur l'île au pied de l'abbaye pour chercher cet ancien campement.<br>Miaou ! Je te tiens au courant Charchiviste, et merci du tuyau, allons explorer !
+100;Hum... Vu que les sables arrivent dans le secteur de la Loire essentiellement à partir du XIIIe siècle, il faut d'abord que j'arrive à localiser une île faite de limons et d'argiles, noyés dans ces chables plus récents...
+101;Essayons d’abord de calibrer un peu notre appareil électromagnétique EM31. Il faut d'abord que je m'en équipe. Hum… En selectionnant l'outil avec la <b>touche 1</b> ou la molette, je devrais pouvoir m'en équiper.
+102;Parfait ! Mais le matériel coûte cher, je vais devoir <b>dépenser des croquettes</b> pour l'utiliser, j'ai un budget de 3000 croquettes. Juste assez pour compléter l'expédition ! Heureusement que le calibrage ne me coûte rien pour la phase de test, je peux essayer de l'utiliser maintenant. La <b>touche E</b> devrait faire l'affaire.
+103;Parfait ! Ça semble marcher ! Je peux récolter des données jusqu'à <b>10 cases</b> avec l'EM31. Et je me déplace avec les touches <b>ZQSD</b>, bien sûr.
+104;Super l'EM31 fonctionne ! Alors… Quand il m’indique une valeur très conductrice et fait un son aigu, ça signifie que j’ai pas mal de limons et d’argile, et donc que je me rapproche de l’ancienne île que je cherche. C'est bien ça ! Le son sera mon guide ! 
+105;À l’inverse, si j’ai une grosse épaisseur de chable, peu de chance que cette ancienne île soit là, donc l’EM31 fait un son plus grave car le sous-sol est moins conducteur. Sur les routes ça s'affole, normal avec le goudron… Ça ne sert à rien d’y faire des mesures, je perdrais des croquettes inutilement… Et impossible d'en récupérer sur l'île, je dois faire attention !
+106;Miaou ! A présent la tarière à main ! Elle me permet de faire des trous discrets mais profonds dans le sol. Je l'équipe avec le <b>bouton 2</b> (ou la molette), et l'utilise toujours avec <b>E</b>. Voyons voir...
+107;Si j’ai de la chance, je peux trouver des charbons de bois, un autre indice de nos Vikings. On en trouve toujours quand il y a des traces d’occupations anciennes.
+108;Une fois les <b>charbons</b> collectés dans des zones vraiment <b>fortes en argile</b>, il me restera à m’en servir pour faire des datations au carbone 14. C'est mon troisième outil, je peux m'en équiper avec le <b>bouton 3</b>. Mais ça coûte tellement cher alors autant en être sûr et certain, miaou !
+109;Si je retrouve cette ancienne île d'argile, avec une datation carbone 14 qui montre qu’elle a été occupée au IXe siècle, il ne restera plus qu’à aller y faire des sondages, quand on pourra y revenir avec mes collègues charkéologues.<br> On pourra alors déterminer si on trouve bien des traces de Vikings ou d’autres personnes du IXe siècle. Mais je dois trouver ces charbons dans l'argile... Pas dans le sable, c'est trop récent !
+110;Dernière chose, où est ma carte de l'île ? Ah, elle est là. En appuyant sur la <b>touche A</b>, je peux consulter la carte de l'île.
+111;Allez, en route ! J'ai encore quelques mètres pour tester mes outils, puis c'est parti pour la chasse aux Vikings !
+1000;Chattention ! Si je continue à utiliser autant de croquettes, il ne m’en restera plus pour financer des datations au carbone 14 ! C'est l'échec assuré !
+1001;C’est fini pour aujourd'hui. Je n’ai même plus assez de croquettes pour financer une datation…
 1002;Super, il y a des charbons ici !
 1003;Super, il y a des charbons ici, dans les limons argileux qui plus est !
-1004;Chatastrophe, suis-je sot ! Cela ne servait à rien de dater des charbons provenant des sables, ils sont trop récents ! Voilà des croquettes de perdues…
-1005;Génial ! On tient notre ancienne île de limons-argileux, noyée dans les sables et avec des charbons qui indiquent une occupation au IXe s. ! Maintenant retour à la base pour constituer notre équipe de charkéologues pour préparer une opération archéologique sur la paléo-île !
-10000;Lors de vos recherches vous allez peut-être tomber sur une ancienne route qui date de l'époque de napoléon, si si je vous chassure, c'est dans les livres d'Histoire ! Elle se trouve un peu à l'ouest de ma ferme je crois, mais je ne sais pas où !
-10001;OK, bon à savoir ça ! C'est chamusant
+1004;Chatastrophe, suis-je sot ! Cela ne sert à rien de dater des charbons provenant des sables, ils sont trop récents ! Voilà des croquettes de perdues…
+1005;Génial ! On tient notre ancienne île de limons-argileux, noyée dans les sables et avec des charbons qui indiquent une occupation au IXe siècle ! Maintenant retour à la base pour constituer notre équipe de charkéologues pour préparer une opération archéologique sur la paléo-île !
+1006;Brrr chat mouille ! La Loire est rapide, je risquerais de me noyer !
+1007;Je ne peux pas creuser dans la route.
+1008;Gzzzt MIAOU ! Ça, c'était un câble électrique souterrain !
+1009;Impossible de creuser ici, on dirait qu'il y a des graviers compacté là-dessous !
+1010;Il n'y a pas de charbon dans le sol à analyser.
+1011;J'ai besoin de prélever des charbons du sol avec la tarière avant de les analyser.
+1012;C'est une propriété privée, je ne peux pas passer par ici.
+10000;Lors de vos recherches vous allez peut-être tomber sur une ancienne route qui date de l'époque de Napoléon, si si je vous chassure, c'est dans les livres d'Histoire ! Elle se trouve un peu à l'ouest de ma ferme je crois, mais je ne sais pas où !
+10001;OK, bon à savoir ça ! C'est chamusant.
 10002;Chat ne sert à rien de chercher des choses ici, on ne trouve rien dans les champs ! Oust !! Vous ruinez tout mon travail !!
-10003;Mmmh ! Si il y a des vestiges ils peuvent être profondément enfouis et ne pas être visibles en surface…
-10004;Faites attention si vous faites des trous à l'Est de ma ferme. Il y a un gros cable électrique enterré ! mais je ne sais pas où…
-10005;Miaou ! Il va falloir faire chattention. En plus ça peut modifier mon signal électromagnétique ! Et ca fait mal brrrr !!
-10006;Il fait beau aujourd'hui non ?  Vous allez à la pêche ?
+10003;Mmmh ! S'il y a des vestiges, ils peuvent être profondément enfouis et ne pas être visibles en surface…
+10004;Faites attention si vous faites des trous à l'Est de ma ferme. Il y a un gros câble électrique enterré ! Mais je ne sais pas où…
+10005;Miaou ! Il va falloir faire chattention. En plus ça peut modifier mon signal électromagnétique ! Et ça fait mal brrrr !!
+10006;Il fait beau aujourd'hui non ? Vous allez à la pêche ?
 10007;C'est vrai que j'aimerais bien un bon petit poisson, mais la recherche n'attend pas ! 
-10008;Moi j'ai jamais rien trouvé dans mes champs, ça m'étonnerais que vous trouviez quelques chose ! Par contre la Loire charrie beaucoup de choses…
-10009;Miaou ! Si je veux chercher les traces d'un campement viking il faut que je trouve des vestiges en place, pas des objets baladés par la Loire ! Si il y a des vestiges, ils peuvent être profondément enfouis et n'être pas visibles en surface..
+10008;Moi j'ai jamais rien trouvé dans mes champs, ça m'étonnerait que vous trouviez quelques chose ! Par contre la Loire charrie beaucoup de choses…
+10009;Miaou ! Si je veux chercher les traces d'un campement Viking il faut que je trouve des vestiges en place, pas des objets baladés par la Loire ! Si il y a des vestiges, ils peuvent être profondément enfouis et n'être pas visibles en surface..
